@@ -20,7 +20,7 @@
         <TextBlock Height="92"  TextWrapping="Wrap" Text="Evolve" Width="222" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="110,100,188,0" FontSize="72" FontWeight="Bold" Foreground="LightGray"/>
         <TextBlock HorizontalAlignment="Center" Height="17" Margin="337,175,111,0" TextWrapping="Wrap" Text="Demo" VerticalAlignment="Top" Width="72" Foreground="Gray"/>
         <StackPanel HorizontalAlignment="Center" Height="241" Margin="0,200,0,0" VerticalAlignment="Top" Width="520">
-            <Button Content="Nová Hra" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10" BorderThickness="5" FontSize="36" FontWeight="Bold"/>
+            <Button Content="Nová Hra" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10" BorderThickness="5" FontSize="36" FontWeight="Bold" Click="Nova_hra"/>
             <Button Content="Načíst Hru" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10" BorderThickness="5"  FontSize="36" FontWeight="Bold"/>
             <Button Content="Konec" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10 " BorderThickness="5"  FontSize="36" FontWeight="Bold" Click="Konec"/>
         </StackPanel>

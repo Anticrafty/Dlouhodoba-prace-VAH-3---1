@@ -9,6 +9,9 @@
       Title="DialogovyFrame">
 
     <Grid>
-        
+        <Image x:Name="odesilatel" HorizontalAlignment="Left" Height="400" Margin="25" VerticalAlignment="Top" Width="300"/>
+        <TextBlock x:Name="Text" HorizontalAlignment="Right" Margin="23" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="350" Width="435"/>
+        <Button Content="Dál" HorizontalAlignment="Left" Height="38" Margin="344,387,0,0" VerticalAlignment="Top" Width="433" Click="Pokracovani"/>
+
     </Grid>
 </Page>

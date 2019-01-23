@@ -30,7 +30,23 @@ namespace WandsAndGunsEvolve
         public DialogovyFrame(Frame vyvolavac, Rozhovor dialog) : this()
         {
             VyvolavaciOkno = vyvolavac;
+
+            Application.Current.MainWindow.Height = 500;
+            Application.Current.MainWindow.Width = 800;
+
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/" + dialog.obr_odkaz,UriKind.Relative);
+            b.EndInit();
+
             Dialog = dialog;
+            odesilatel.Source = b;
+            Pokracovani(null, null);
+        }
+
+        private void Pokracovani(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
