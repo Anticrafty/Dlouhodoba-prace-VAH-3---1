@@ -41,7 +41,8 @@ namespace WandsAndGunsEvolve
             mluva.Add("Anti was here!!!");
             string vesnican_obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
             Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
-            PredchoziOkno.Navigate(new DialogovyFrame(PredchoziOkno,prolog));
+            Prolog.Navigate(new DialogovyFrame(Prolog, prolog));
+            prologovac = Prolog;
         }
         
         private void Nacist_Hru(object sender, RoutedEventArgs e)
@@ -56,7 +57,7 @@ namespace WandsAndGunsEvolve
 
         static public void EndProlog()
         {
-            prologovac = null;
+            prologovac.Navigate(null);
         }
 
     }

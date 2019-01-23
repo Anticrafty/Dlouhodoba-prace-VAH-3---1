@@ -22,6 +22,7 @@ namespace WandsAndGunsEvolve
     {
         private Frame VyvolavaciOkno;
         Rozhovor Dialog;
+        int kolikaty_z_listu = 0;
 
         public DialogovyFrame()
         {
@@ -46,6 +47,16 @@ namespace WandsAndGunsEvolve
 
         private void Pokracovani(object sender, RoutedEventArgs e)
         {
+            if (kolikaty_z_listu + 1 == Dialog.text.Count())
+            {
+                Text.Text = Dialog.text[kolikaty_z_listu];
+                kolikaty_z_listu++;
+            }
+            else
+            {
+                MainMenu.EndProlog();
+            }
+            
 
         }
     }

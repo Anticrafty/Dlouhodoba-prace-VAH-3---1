@@ -5,13 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WandsAndGunsEvolve"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="350" d:DesignWidth="600"
+      Background="LightGray"
       Title="DialogovyFrame">
 
     <Grid>
-        <Image x:Name="odesilatel" HorizontalAlignment="Left" Height="400" Margin="25" VerticalAlignment="Top" Width="300"/>
-        <TextBlock x:Name="Text" HorizontalAlignment="Right" Margin="23" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="350" Width="435"/>
-        <Button Content="Dál" HorizontalAlignment="Left" Height="38" Margin="344,387,0,0" VerticalAlignment="Top" Width="433" Click="Pokracovani"/>
+        <Image x:Name="odesilatel" HorizontalAlignment="Left" Height="300" Margin="25" VerticalAlignment="Top" Width="200"/>
+        <TextBlock x:Name="Text" HorizontalAlignment="Right" Margin="0,23,23,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="259" Width="330"/>
+        <Button Content="Dál" HorizontalAlignment="Left" Height="38" Margin="247,287,0,0" VerticalAlignment="Top" Width="330" Click="Pokracovani"/>
 
     </Grid>
 </Page>

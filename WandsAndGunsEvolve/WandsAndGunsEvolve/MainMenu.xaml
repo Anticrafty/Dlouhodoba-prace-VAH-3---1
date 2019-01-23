@@ -10,7 +10,6 @@
       Title="MainMenu">
 
     <Grid>
-        <Frame x:Name="Prolog"></Frame>
         <StackPanel HorizontalAlignment="Center" Height="100" Margin="0,10,0,0" VerticalAlignment="Top" Width="520" Orientation="Horizontal">
             <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="Wands" VerticalAlignment="Top" Width="297" FontSize="72" FontFamily="Lucida Handwriting" Foreground="LightGray"/>
             <TextBlock x:Name="and" TextWrapping="Wrap" Text="#" FontSize="72" Foreground="LightGray"/>
@@ -24,6 +23,6 @@
             <Button Content="Načíst Hru" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10" BorderThickness="5"  FontSize="36" FontWeight="Bold"/>
             <Button Content="Konec" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10 " BorderThickness="5"  FontSize="36" FontWeight="Bold" Click="Konec"/>
         </StackPanel>
-
+        <Frame Height="350" Width="600" x:Name="Prolog" HorizontalAlignment="Center" VerticalAlignment="Center"  ></Frame>
     </Grid>
 </Page>
