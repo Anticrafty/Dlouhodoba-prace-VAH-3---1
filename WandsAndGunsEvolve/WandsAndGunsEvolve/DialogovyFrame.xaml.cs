@@ -20,9 +20,17 @@ namespace WandsAndGunsEvolve
     /// </summary>
     public partial class DialogovyFrame : Page
     {
+        private Frame VyvolavaciOkno;
+        Rozhovor Dialog;
+
         public DialogovyFrame()
         {
             InitializeComponent();
+        }
+        public DialogovyFrame(Frame vyvolavac, Rozhovor dialog) : this()
+        {
+            VyvolavaciOkno = vyvolavac;
+            Dialog = dialog;
         }
     }
 }

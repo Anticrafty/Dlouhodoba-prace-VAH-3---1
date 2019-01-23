@@ -40,7 +40,7 @@ namespace WandsAndGunsEvolve
             List<string> mluva = new List<string>();
             string vesnican_obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
             Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
-            PredchoziOkno.Navigate(new MainMenu(PredchoziOkno,prolog));
+            PredchoziOkno.Navigate(new DialogovyFrame(PredchoziOkno,prolog));
         }
         
         private void Nacist_Hru(object sender, RoutedEventArgs e)
