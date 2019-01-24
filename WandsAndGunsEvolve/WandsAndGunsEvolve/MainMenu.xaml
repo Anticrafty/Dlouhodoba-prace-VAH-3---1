@@ -23,6 +23,6 @@
             <Button Content="Načíst Hru" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10" BorderThickness="5"  FontSize="36" FontWeight="Bold"/>
             <Button Content="Konec" Foreground="Gray" Background="{x:Null}" Height="60" Margin="10 " BorderThickness="5"  FontSize="36" FontWeight="Bold" Click="Konec"/>
         </StackPanel>
-        <Frame Height="350" Width="600" x:Name="Prolog" HorizontalAlignment="Center" VerticalAlignment="Center"  ></Frame>
+        <Frame Height="350" Width="600" x:Name="Prolog" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,0"  ></Frame>
     </Grid>
 </Page>

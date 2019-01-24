@@ -13,6 +13,7 @@
         <Image x:Name="odesilatel" HorizontalAlignment="Left" Height="300" Margin="25" VerticalAlignment="Top" Width="200"/>
         <TextBlock x:Name="Text" HorizontalAlignment="Right" Margin="0,23,23,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="259" Width="330"/>
         <Button Content="Dál" HorizontalAlignment="Left" Height="38" Margin="247,287,0,0" VerticalAlignment="Top" Width="330" Click="Pokracovani"/>
+        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="600"/>
 
     </Grid>
 </Page>
