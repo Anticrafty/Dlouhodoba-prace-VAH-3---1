@@ -58,6 +58,7 @@ namespace WandsAndGunsEvolve
         static public void EndProlog()
         {
             prologovac.Navigate(null);
+            // na okno s vesnici
         }
 
     }
