@@ -20,9 +20,17 @@ namespace WandsAndGunsEvolve
     /// </summary>
     public partial class Vesnice : Page
     {
+        private Frame PredchoziOkno;
         public Vesnice()
         {
             InitializeComponent();
+        }
+
+        public Vesnice(Frame Window) : this()
+        {
+            Application.Current.MainWindow.Height = 489;
+            Application.Current.MainWindow.Width = 820;
+            PredchoziOkno = Window;
         }
     }
 }

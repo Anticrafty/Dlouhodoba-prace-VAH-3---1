@@ -22,6 +22,7 @@ namespace WandsAndGunsEvolve
     {
         public static Frame prologovac;
         private Frame PredchoziOkno;
+        private static Frame OdkazNaPredchozi;
 
         public MainMenu()
         {
@@ -31,6 +32,7 @@ namespace WandsAndGunsEvolve
         public MainMenu( Frame Window ) : this()
         {
             this.PredchoziOkno = Window;
+            OdkazNaPredchozi = PredchoziOkno;
             Application.Current.MainWindow.Height = 500;
             Application.Current.MainWindow.Width = 540;
             and.Text = "" + (char)0X26;
@@ -59,6 +61,7 @@ namespace WandsAndGunsEvolve
         {
             prologovac.Navigate(null);
             // na okno s vesnici
+            OdkazNaPredchozi.Navigate(new Vesnice(OdkazNaPredchozi));
         }
 
     }
