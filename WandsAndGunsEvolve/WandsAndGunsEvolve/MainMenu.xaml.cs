@@ -44,6 +44,8 @@ namespace WandsAndGunsEvolve
             string vesnican_obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
             Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
             Prolog.Navigate(new DialogovyFrame(Prolog, prolog));
+            Application.Current.MainWindow.Height = 500;
+            Application.Current.MainWindow.Width = 800;
             prologovac = Prolog;
         }
         
@@ -57,7 +59,7 @@ namespace WandsAndGunsEvolve
             System.Windows.Application.Current.Shutdown();
         }
 
-        static public void EndProlog()
+        static public void Ukonci_podokno()
         {
             prologovac.Navigate(null);
             // na okno s vesnici

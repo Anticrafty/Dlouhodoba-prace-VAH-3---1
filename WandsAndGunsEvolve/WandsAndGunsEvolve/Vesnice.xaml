@@ -18,7 +18,9 @@
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
             <StackPanel Background="LightGray">
-
+                <Button Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
+                    <Image x:Name="nastaveni" Height="40" Width="40" />
+                </Button>
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="360" Margin="80,80,0,0" VerticalAlignment="Top" Width="710">
@@ -184,7 +186,8 @@
                 </Grid>
             </Border>
         </Border>
-        <Button Content="" Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
 
+        <Frame Height="350" Width="600" x:Name="Podokno" HorizontalAlignment="Center" VerticalAlignment="Center" ></Frame>
     </Grid>
 </Page>

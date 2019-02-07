@@ -21,8 +21,11 @@ namespace WandsAndGunsEvolve
     public partial class Vesnice : Page
     {
         private Frame PredchoziOkno;
+        public static Frame podokno;
+
         public Vesnice()
         {
+            podokno = Podokno;
             InitializeComponent();
         }
 
@@ -31,6 +34,25 @@ namespace WandsAndGunsEvolve
             Application.Current.MainWindow.Height = 489;
             Application.Current.MainWindow.Width = 820;
             PredchoziOkno = Window;
+
+            // menu nasataveni
+            //nastaveni
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/nastaveni.png", UriKind.Relative);
+            b.EndInit();
+            
+            nastaveni.Source = b;
+        }
+        static public void Ukonci_podokno()
+        {
+            podokno.Navigate(null);
+        }
+
+        private void Nastaveni_Click(object sender, RoutedEventArgs e)
+        {
+            Podokno.Navigate(new NastaveniMenu(Podokno));
+            podokno = Podokno;
         }
     }
 }

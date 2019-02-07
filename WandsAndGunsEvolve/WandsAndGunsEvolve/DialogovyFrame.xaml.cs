@@ -32,8 +32,8 @@ namespace WandsAndGunsEvolve
         {
             VyvolavaciOkno = vyvolavac;
 
-            Application.Current.MainWindow.Height = 500;
-            Application.Current.MainWindow.Width = 800;
+            VyvolavaciOkno.Width = 600;
+            VyvolavaciOkno.Height = 350;
 
             BitmapImage b = new BitmapImage();
             b.BeginInit();
@@ -54,7 +54,7 @@ namespace WandsAndGunsEvolve
             }
             else
             {
-                MainMenu.EndProlog();
+                MainMenu.Ukonci_podokno();
             }
             
 
