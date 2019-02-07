@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Budova.cs" />
     <Compile Include="DialogovyFrame.xaml.cs">
       <DependentUpon>DialogovyFrame.xaml</DependentUpon>
     </Compile>

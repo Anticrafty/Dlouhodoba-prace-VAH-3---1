@@ -18,8 +18,8 @@
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
             <StackPanel Background="LightGray">
-                <Button Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
-                    <Image x:Name="nastaveni" Height="40" Width="40" />
+                <Button x:Name="nastaveni" Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
+                    <Image x:Name="nastaveni_img" Height="40" Width="40" />
                 </Button>
             </StackPanel>
         </Border>

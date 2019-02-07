@@ -22,6 +22,7 @@ namespace WandsAndGunsEvolve
     {
         private Frame PredchoziOkno;
         public static Frame podokno;
+        public List<List<Budova>> Budovy = new List<List<Budova>>();
 
         public Vesnice()
         {
@@ -42,7 +43,8 @@ namespace WandsAndGunsEvolve
             b.UriSource = new Uri("img/nastaveni.png", UriKind.Relative);
             b.EndInit();
             
-            nastaveni.Source = b;
+            nastaveni_img.Source = b;
+            Nastav_Mista_Pro_Budovy();
         }
         static public void Ukonci_podokno()
         {
@@ -53,6 +55,29 @@ namespace WandsAndGunsEvolve
         {
             Podokno.Navigate(new NastaveniMenu(Podokno));
             podokno = Podokno;
+        }
+
+        private void Nastav_Mista_Pro_Budovy()
+        {
+            
+            for ( int a = 1; a < 9; a ++)
+            {
+                List<Budova> novy_sloupec = new List<Budova>();
+                if (a == 3 || a==6)
+                {
+                    a++;
+                }
+                for (int b = 1; b < 15; b++)
+                {
+                    if (b == 3 || b == 6 || b == 9 || b == 12)
+                    {
+                        b++;
+                    }
+                    Budova novy = new Budova();
+                    novy_sloupec.Add(novy);
+                }
+                Budovy.Add(novy_sloupec);
+            }
         }
     }
 }
