@@ -9,6 +9,8 @@ namespace WandsAndGunsEvolve
 {
     public class Budova
     {
-        BitmapImage b = null;
+        public BitmapImage b = null;
+        public int Y_sloupec;
+        public int X_radek;
     }
 }
