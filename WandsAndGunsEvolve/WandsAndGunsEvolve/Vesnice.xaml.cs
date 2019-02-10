@@ -42,7 +42,7 @@ namespace WandsAndGunsEvolve
             b.BeginInit();
             b.UriSource = new Uri("img/nastaveni.png", UriKind.Relative);
             b.EndInit();
-            
+
             nastaveni_img.Source = b;
             Nastav_Mista_Pro_Budovy();
         }
@@ -59,11 +59,11 @@ namespace WandsAndGunsEvolve
 
         private void Nastav_Mista_Pro_Budovy()
         {
-            
-            for ( int a = 1; a < 9; a ++)
+
+            for (int a = 1; a < 9; a++)
             {
                 List<Budova> novy_sloupec = new List<Budova>();
-                if (a == 3 || a==6)
+                if (a == 3 || a == 6)
                 {
                     a++;
                 }
@@ -74,10 +74,88 @@ namespace WandsAndGunsEvolve
                         b++;
                     }
                     Budova novy = new Budova();
+                    novy.X_radek = b;
+                    novy.Y_sloupec = a;
+
+                    Button buttova = new Button();
+                    buttova.Height = 50;
+                    buttova.Width = 50;
+                    buttova.BorderBrush = Brushes.Green;
+                    buttova.BorderThickness = new Thickness(3, 3, 3, 3);
+                    buttova.HorizontalAlignment = HorizontalAlignment.Right;
+                    buttova.VerticalAlignment = VerticalAlignment.Bottom;
+                    buttova.Name = "Budova" + a + b;
+                    buttova.Click += new RoutedEventHandler(Pridej_baracek);
+                    Grid.SetColumn(buttova, b);
+                    Grid.SetRow(buttova, a);
+
+                    BitmapImage bit = new BitmapImage();
+                    bit.BeginInit();
+                    bit.UriSource = new Uri(@"img/" + novy.obr_odkaz, UriKind.Relative);
+                    bit.EndInit();
+
+                    Image obrazecek = new Image();
+                    obrazecek.Source = bit;
+
+                    buttova.Content = obrazecek;
+                    Vesnicoid.Children.Add(buttova);
+
                     novy_sloupec.Add(novy);
                 }
                 Budovy.Add(novy_sloupec);
             }
+        }
+        private void Pridej_baracek(object sender, RoutedEventArgs e)
+        {
+            Button butt = sender as Button;
+            string ae = butt.Name.Substring(6, 1);
+            string be;
+            if (butt.Name.Length == 8)
+            {
+                 be = butt.Name.Substring(7, 1);
+            }
+            else
+            {
+                 be = butt.Name.Substring(7, 2);
+            }
+            int a = int.Parse(ae);
+            int b = int.Parse(be);
+            int ad = 0;
+            int bd = 0;
+            int aa = 0;
+            int bb = 0;
+            Image novy_img = new Image();
+            foreach (List<Budova> budovas in Budovy)
+            {
+                bd = 0;
+                /*try
+                */
+                    foreach (Budova budovan in budovas)
+                    {
+                    
+                        if(budovan.X_radek == b && budovan.Y_sloupec == a)
+                        {
+                        aa = ad;
+                        bb = bd;
+                        }
+                        bd++;
+                   
+                    }
+                /*}
+                catch
+                {
+
+                }*/
+                ad++;
+            }
+            Budovy[aa][bb] = new Domov() {X_radek = b , Y_sloupec = a };
+            BitmapImage bim = new BitmapImage();
+            bim.BeginInit();
+            bim.UriSource = new Uri("img/" + Budovy[aa][bb].obr_odkaz, UriKind.Relative);
+            bim.EndInit();
+            novy_img.Source = bim;
+
+            butt.Content = novy_img;
         }
     }
 }

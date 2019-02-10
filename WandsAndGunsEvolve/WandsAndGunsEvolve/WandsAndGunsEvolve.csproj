@@ -59,6 +59,7 @@
     <Compile Include="DialogovyFrame.xaml.cs">
       <DependentUpon>DialogovyFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Domov.cs" />
     <Compile Include="NastaveniMenu.xaml.cs">
       <DependentUpon>NastaveniMenu.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\nastaveni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\domek.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,7 +26,7 @@
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="360" Margin="80,80,0,0" VerticalAlignment="Top" Width="710">
 
             <Border BorderBrush="#FF492909" BorderThickness="20" Height="358" Width="706">
-                <Grid>
+                <Grid x:Name="Vesnicoid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.2*"  />
                         <ColumnDefinition Width="1*" />
@@ -183,6 +183,10 @@
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="5" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="7" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="8" />
+                    <Button  Grid.Column="14" HorizontalAlignment="Right"  Grid.Row="7" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
+                    <Button  Grid.Column="13" HorizontalAlignment="Right"  Grid.Row="7" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
+                    <Button Grid.Column="13" HorizontalAlignment="Right"  Grid.Row="8" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
+                    <Button Grid.Column="14" HorizontalAlignment="Right"  Grid.Row="8" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" BorderBrush="Green" />
                 </Grid>
             </Border>
         </Border>
