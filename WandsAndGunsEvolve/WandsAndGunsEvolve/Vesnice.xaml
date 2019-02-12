@@ -18,9 +18,13 @@
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
             <StackPanel Background="LightGray">
+                <Button x:Name="staveni" Height="40" Width="40" Margin="7" Click="Staveni_Click">
+                    <Image x:Name="staveni_img" Height="40" Width="40" />
+                </Button>
                 <Button x:Name="nastaveni" Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
                     <Image x:Name="nastaveni_img" Height="40" Width="40" />
                 </Button>
+                
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="360" Margin="80,80,0,0" VerticalAlignment="Top" Width="710">
@@ -182,11 +186,7 @@
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="4" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="5" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="7" />
-                    <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="8" />
-                    <Button  Grid.Column="14" HorizontalAlignment="Right"  Grid.Row="7" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
-                    <Button  Grid.Column="13" HorizontalAlignment="Right"  Grid.Row="7" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
-                    <Button Grid.Column="13" HorizontalAlignment="Right"  Grid.Row="8" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" />
-                    <Button Grid.Column="14" HorizontalAlignment="Right"  Grid.Row="8" VerticalAlignment="Bottom" Width="50" Height="50" BorderThickness="3" BorderBrush="Green" />
+                    <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="8" />                   
                 </Grid>
             </Border>
         </Border>

@@ -45,6 +45,13 @@ namespace WandsAndGunsEvolve
 
             nastaveni_img.Source = b;
             Nastav_Mista_Pro_Budovy();
+
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/hammer.png", UriKind.Relative);
+            b.EndInit();
+
+            staveni_img.Source = b;
         }
         static public void Ukonci_podokno()
         {
@@ -156,6 +163,11 @@ namespace WandsAndGunsEvolve
             novy_img.Source = bim;
 
             butt.Content = novy_img;
+        }
+        private void Staveni_Click(object sender, RoutedEventArgs e)
+        {
+            /*Podokno.Navigate(new NastaveniMenu(Podokno));
+            podokno = Podokno;*/
         }
     }
 }

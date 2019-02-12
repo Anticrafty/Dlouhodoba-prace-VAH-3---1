@@ -67,6 +67,9 @@
     <Compile Include="Vesnice.xaml.cs">
       <DependentUpon>Vesnice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vyber.xaml.cs">
+      <DependentUpon>vyber.xaml</DependentUpon>
+    </Compile>
     <Page Include="DialogovyFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vesnice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vyber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\domek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\hammer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

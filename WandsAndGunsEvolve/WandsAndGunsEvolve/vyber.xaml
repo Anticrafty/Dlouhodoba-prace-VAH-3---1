@@ -1,0 +1,24 @@
+﻿<Page x:Class="WandsAndGunsEvolve.vyber"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WandsAndGunsEvolve"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="400"
+      Background="LightGray"
+      Title="vyber">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="10">
+                <Button Height="50" BorderThickness="4">
+                    <StackPanel Orientation="Horizontal" Height="40" Width="370" >
+                        <Image></Image>
+                        <TextBlock FontSize="24">Block blcok block </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
