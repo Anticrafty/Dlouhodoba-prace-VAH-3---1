@@ -166,8 +166,8 @@ namespace WandsAndGunsEvolve
         }
         private void Staveni_Click(object sender, RoutedEventArgs e)
         {
-            /*Podokno.Navigate(new NastaveniMenu(Podokno));
-            podokno = Podokno;*/
+            Podokno.Navigate(new vyber(Podokno));
+            podokno = Podokno;
         }
     }
 }

@@ -63,6 +63,7 @@
     <Compile Include="NastaveniMenu.xaml.cs">
       <DependentUpon>NastaveniMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Postava.cs" />
     <Compile Include="Rozhovor.cs" />
     <Compile Include="Vesnice.xaml.cs">
       <DependentUpon>Vesnice.xaml</DependentUpon>

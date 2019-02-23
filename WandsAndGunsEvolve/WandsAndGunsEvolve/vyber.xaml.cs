@@ -20,9 +20,19 @@ namespace WandsAndGunsEvolve
     /// </summary>
     public partial class vyber : Page
     {
+        private Frame VyvolavaciOkno;
+
         public vyber()
         {
             InitializeComponent();
+        }
+
+        public vyber(Frame vyvolavac) : this()
+        {
+            VyvolavaciOkno = vyvolavac;
+
+            VyvolavaciOkno.Width = 290;
+            VyvolavaciOkno.Height = 220;
         }
     }
 }
