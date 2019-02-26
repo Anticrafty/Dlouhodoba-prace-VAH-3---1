@@ -159,39 +159,46 @@ namespace WandsAndGunsEvolve
         }
         private void Staveni_Click(object sender, RoutedEventArgs e)
         {
-            staveni_bool = true;
-            staveni.Background = Brushes.LightGreen;
-            foreach (Object obj in Vesnicoid.Children)
+            if(staveni_bool)
             {
-                if (obj is Button)
+                OdStaveni();
+            }
+            else
+            { 
+                staveni_bool = true;
+                staveni.Background = Brushes.LightGreen;
+                foreach (Object obj in Vesnicoid.Children)
                 {
-                    Button butt = obj as Button;
-                    string ae = butt.Name.Substring(6, 1);
-                    string be;
-                    if (butt.Name.Length == 8)
+                    if (obj is Button)
                     {
-                        be = butt.Name.Substring(7, 1);
-                    }
-                    else
-                    {
-                        be = butt.Name.Substring(7, 2);
-                    }
-                    int a = int.Parse(ae);
-                    int b = int.Parse(be);
-
-                    foreach (List<Budova> radek in Budovy)
-                    {
-                        foreach (Budova budova in radek)
+                        Button butt = obj as Button;
+                        string ae = butt.Name.Substring(6, 1);
+                        string be;
+                        if (butt.Name.Length == 8)
                         {
-                            if (budova.X_radek == b && budova.Y_sloupec == a)
+                            be = butt.Name.Substring(7, 1);
+                        }
+                        else
+                        {
+                            be = butt.Name.Substring(7, 2);
+                        }
+                        int a = int.Parse(ae);
+                        int b = int.Parse(be);
+
+                        foreach (List<Budova> radek in Budovy)
+                        {
+                            foreach (Budova budova in radek)
                             {
-                                if (budova is Domov)
+                                if (budova.X_radek == b && budova.Y_sloupec == a)
                                 {
-                                    butt.BorderBrush = Brushes.Red;
-                                }
-                                else
-                                {
-                                    butt.BorderBrush = Brushes.LightGreen;
+                                    if (budova is Domov)
+                                    {
+                                        butt.BorderBrush = Brushes.Red;
+                                    }
+                                    else
+                                    {
+                                        butt.BorderBrush = Brushes.LightGreen;
+                                    }
                                 }
                             }
                         }
