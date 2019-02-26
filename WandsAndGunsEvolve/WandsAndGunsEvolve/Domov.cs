@@ -11,6 +11,7 @@ namespace WandsAndGunsEvolve
         public Domov()
         {
             obr_odkaz = @"domek.png";
+            Potreba_Na_Postaveni = 2;
         }
     }
 }

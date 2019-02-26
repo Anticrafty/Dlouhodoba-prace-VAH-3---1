@@ -27,6 +27,7 @@ namespace WandsAndGunsEvolve
         public bool staveni_bool = false;
         static public Grid vesnicoid;
 
+
         public Vesnice()
         {            
 
@@ -57,6 +58,8 @@ namespace WandsAndGunsEvolve
             b.EndInit();
 
             staveni_img.Source = b;
+
+            Vytvor_Lidi_Prvni();
         }
         static public void Ukonci_podokno()
         {
@@ -119,21 +122,22 @@ namespace WandsAndGunsEvolve
         }
         private void Pridej_baracek(object sender, RoutedEventArgs e)
         {
+            Button butt = sender as Button;
+            string ae = butt.Name.Substring(6, 1);
+            string be;
+            if (butt.Name.Length == 8)
+            {
+                be = butt.Name.Substring(7, 1);
+            }
+            else
+            {
+                be = butt.Name.Substring(7, 2);
+            }
+            int a = int.Parse(ae);
+            int b = int.Parse(be);
             if (staveni_bool)
             {
-                Button butt = sender as Button;
-                string ae = butt.Name.Substring(6, 1);
-                string be;
-                if (butt.Name.Length == 8)
-                {
-                    be = butt.Name.Substring(7, 1);
-                }
-                else
-                {
-                    be = butt.Name.Substring(7, 2);
-                }
-                int a = int.Parse(ae);
-                int b = int.Parse(be);
+                
 
                 if (butt.BorderBrush == Brushes.Green)
                 {
@@ -145,10 +149,33 @@ namespace WandsAndGunsEvolve
                     Podokno.Navigate(new potvrzeni(Podokno, a, b));
                 }
                 OdStaveni();
-                podokno = Podokno;
-                
+                podokno = Podokno;                
             }
+            else
+            {
+                int ad = 0;
+                int bd = 0;
+                int aa = 0;
+                int bb = 0;
+                foreach (List<Budova> budovas in Budovy)
+                {
+                    bd = 0;
+                    foreach (Budova budovan in budovas)
+                    {
 
+                        if (budovan.X_radek == b && budovan.Y_sloupec == a)
+                        {
+                            aa = ad;
+                            bb = bd;
+                        }
+                        bd++;
+
+                    }
+                    ad++;
+                }
+
+            }
+            
         }
         private void Staveni_Click(object sender, RoutedEventArgs e)
         {
@@ -261,6 +288,15 @@ namespace WandsAndGunsEvolve
         public static void Potvrzeni(int a,int b)
         {
             podokno.Navigate(new vyber(podokno, b, a, "Budova"));            
+        }
+
+        public void Vytvor_Lidi_Prvni()
+        {
+            Postava Eidam = new Postava() { muzstvi = true };
+            Postava Mozzarella = new Postava() { muzstvi = false };
+
+            Obyvatele.Add(Eidam);
+            Obyvatele.Add(Mozzarella);
         }
     }
 }

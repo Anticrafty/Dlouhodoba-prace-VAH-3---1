@@ -13,7 +13,7 @@ namespace WandsAndGunsEvolve
         public int Y_sloupec;
         public int X_radek;
         public int Potreba_Na_Postaveni;
-        public int Splneno_Na_Postaveni;
+        public int Splneno_Na_Postaveni = 0;
         List<Postava> pracovnici = new List<Postava>();
     }
 }
