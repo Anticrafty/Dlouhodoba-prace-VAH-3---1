@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WandsAndGunsEvolve
 {
-    public class Postava
+    public abstract class Postava
     {
         public int Max_Zivotu = 5;
         public int Utok = 1;

@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 
 namespace WandsAndGunsEvolve
 {
-    public class Budova
+    public abstract class Budova
     {
         public string obr_odkaz;
         public int Y_sloupec;
@@ -15,5 +15,8 @@ namespace WandsAndGunsEvolve
         public int Potreba_Na_Postaveni;
         public int Splneno_Na_Postaveni = 0;
         List<Postava> pracovnici = new List<Postava>();
+
+        public abstract void Vyvoj();
+        public abstract void Uceni();
     }
 }

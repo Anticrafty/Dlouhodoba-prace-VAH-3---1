@@ -8,10 +8,21 @@ namespace WandsAndGunsEvolve
 {
     public class Domov : Budova
     {
+
         public Domov()
         {
             obr_odkaz = @"domek.png";
             Potreba_Na_Postaveni = 2;
+        }
+
+        public override void Uceni()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Vyvoj()
+        {
+            throw new NotImplementedException();
         }
     }
 }
