@@ -27,18 +27,27 @@ namespace WandsAndGunsEvolve
         public vyber()
         {
             InitializeComponent();
-            povoleny_budovy();
+            
         }
 
-        public vyber(Frame vyvolavac,int x,int y) : this()
+        public vyber(Frame vyvolavac,int x,int y,string what) : this()
         {
             VyvolavaciOkno = vyvolavac;
 
             VyvolavaciOkno.Width = 400;
-            VyvolavaciOkno.Height = 500;
-
+            VyvolavaciOkno.Height = 400;
+            
             X = x;
             Y = y;
+            if (what == "Budova")
+            {
+                povoleny_budovy();
+                Vyber_jmeno.Text = "Vyber Budovu";
+            }
+            else
+            {
+
+            }
         }
 
         public void povoleny_budovy()

@@ -1,0 +1,19 @@
+﻿<Page x:Class="WandsAndGunsEvolve.potvrzeni"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WandsAndGunsEvolve"
+      mc:Ignorable="d" 
+      Background="LightGray"
+      d:DesignHeight="100" d:DesignWidth="300"
+      Title="potvrzeni">
+
+    <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="300">
+        <Grid>
+            <Button Content="Ano" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Width="75" Background="Green" Click="Button_Click"/>
+            <Button Content="Ne" HorizontalAlignment="Left" Margin="180,60,0,0" VerticalAlignment="Top" Width="75" Background="Red" Click="Button_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,0,0,0" TextWrapping="Wrap" Text="Chcete zbořit budovu na tomto pozemku?" VerticalAlignment="Top" Height="55" Width="205" FontSize="20"/>
+        </Grid>
+    </Border>
+</Page>

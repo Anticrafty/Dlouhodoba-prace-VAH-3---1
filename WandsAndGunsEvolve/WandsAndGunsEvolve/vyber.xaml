@@ -5,16 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WandsAndGunsEvolve"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="400"
+      d:DesignHeight="400" d:DesignWidth="400"
       Background="LightGray"
       Title="vyber">
 
-    <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="Seznam" Margin="10">
-                <TextBlock x:Name="Vyber_jmeno" FontSize="36" Margin="10" TextAlignment="Center" FontWeight="Bold">Čeho je to vyber</TextBlock>
-                
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+    <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="400">
+        <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="Seznam" Margin="10">
+                    <TextBlock x:Name="Vyber_jmeno" FontSize="36" Margin="10" TextAlignment="Center" FontWeight="Bold">Čeho je to vyber</TextBlock>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Page>

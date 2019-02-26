@@ -90,9 +90,9 @@ namespace WandsAndGunsEvolve
                     novy.Y_sloupec = a;
 
                     Button buttova = new Button();
-                    buttova.Height = 50;
-                    buttova.Width = 50;
-                    buttova.BorderBrush = Brushes.Green;
+                    buttova.Height = 47;
+                    buttova.Width = 47;
+                    buttova.BorderBrush = Brushes.LightGreen;
                     buttova.BorderThickness = new Thickness(3, 3, 3, 3);
                     buttova.HorizontalAlignment = HorizontalAlignment.Right;
                     buttova.VerticalAlignment = VerticalAlignment.Bottom;
@@ -135,25 +135,18 @@ namespace WandsAndGunsEvolve
                 int a = int.Parse(ae);
                 int b = int.Parse(be);
 
-                OdStaveni();
-                Podokno.Navigate(new vyber(Podokno, b, a));
-                podokno = Podokno;
-
-                /*Button butt = sender as Button;
-                string ae = butt.Name.Substring(6, 1);
-                string be;
-                if (butt.Name.Length == 8)
+                if (butt.BorderBrush == Brushes.Green)
                 {
-                    be = butt.Name.Substring(7, 1);
+                    
+                    Podokno.Navigate(new vyber(Podokno, b, a, "Budova"));
                 }
                 else
                 {
-                    be = butt.Name.Substring(7, 2);
+                    Podokno.Navigate(new potvrzeni(Podokno, a, b));
                 }
-                int a = int.Parse(ae);
-                int b = int.Parse(be);
+                OdStaveni();
+                podokno = Podokno;
                 
-                */
             }
 
         }
@@ -197,7 +190,7 @@ namespace WandsAndGunsEvolve
                                     }
                                     else
                                     {
-                                        butt.BorderBrush = Brushes.LightGreen;
+                                        butt.BorderBrush = Brushes.Green;
                                     }
                                 }
                             }
@@ -216,7 +209,7 @@ namespace WandsAndGunsEvolve
                 if (obj is Button)
                 {
                     Button butt = obj as Button;
-                    butt.BorderBrush = Brushes.Green;
+                    butt.BorderBrush = Brushes.LightGreen;
                 }
             }
         }
@@ -251,7 +244,7 @@ namespace WandsAndGunsEvolve
                                 }
                                 ad++;
                             }
-                        Budovy[aa][bb] = new Domov() { X_radek = nova_budova.X_radek, Y_sloupec = nova_budova.Y_sloupec };
+                        Budovy[aa][bb] = nova_budova;
                         BitmapImage bim = new BitmapImage();
                         bim.BeginInit();
                         bim.UriSource = new Uri("img/" + Budovy[aa][bb].obr_odkaz, UriKind.Relative);
@@ -264,6 +257,10 @@ namespace WandsAndGunsEvolve
                     }
                 }
             }
+        }
+        public static void Potvrzeni(int a,int b)
+        {
+            podokno.Navigate(new vyber(podokno, b, a, "Budova"));            
         }
     }
 }

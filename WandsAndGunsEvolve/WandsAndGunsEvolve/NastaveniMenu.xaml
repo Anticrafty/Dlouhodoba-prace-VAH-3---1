@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WandsAndGunsEvolve"
       mc:Ignorable="d" 
-      d:DesignHeight="200" d:DesignWidth="290"
+      d:DesignHeight="220" d:DesignWidth="290"
       Background="SaddleBrown"
       Title="NastaveniMenu">
+
 
     <Grid>
         <TextBlock Height="47"  TextWrapping="Wrap" Text="Menu" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" FontSize="36" FontWeight="Bold" Foreground="LightGray"/>
@@ -15,6 +16,8 @@
             <Button Content="Uložení" Foreground="Gray" Background="{x:Null}" Height="40" Margin="5" BorderThickness="5" FontSize="16" FontWeight="Bold" />
             <Button Content="Zpět" Foreground="Gray" Background="{x:Null}" Height="40" Margin="5" BorderThickness="5"  FontSize="16" FontWeight="Bold" Click="Zpet_Click"/>
             <Button Content="Konec" Foreground="Gray" Background="{x:Null}" Height="40" Margin="5 " BorderThickness="5"  FontSize="16" FontWeight="Bold" Click="Konec"/>
+
         </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="290"/>
     </Grid>
 </Page>

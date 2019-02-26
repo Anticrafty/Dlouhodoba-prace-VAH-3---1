@@ -64,6 +64,9 @@
       <DependentUpon>NastaveniMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Postava.cs" />
+    <Compile Include="potvrzeni.xaml.cs">
+      <DependentUpon>potvrzeni.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rozhovor.cs" />
     <Compile Include="Vesnice.xaml.cs">
       <DependentUpon>Vesnice.xaml</DependentUpon>
@@ -95,6 +98,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NastaveniMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="potvrzeni.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
