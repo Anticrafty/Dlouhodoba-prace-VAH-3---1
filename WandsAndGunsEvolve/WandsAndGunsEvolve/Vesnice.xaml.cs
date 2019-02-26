@@ -174,6 +174,7 @@ namespace WandsAndGunsEvolve
                     ad++;
                 }
 
+                Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
             }
             
         }
