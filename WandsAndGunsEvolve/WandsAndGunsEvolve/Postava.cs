@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace WandsAndGunsEvolve
 {
-    class Postava
+    public class Postava
     {
-        int Max_Zivotu;
-        int Utok;
-        int Vzdalenost_Utoku;
-        int Obrana;
-        int Postava_za_Den;
+        public int Max_Zivotu;
+        public int Utok;
+        public int Vzdalenost_Utoku;
+        public int Obrana;
+        public int Postava_za_Den;
+        public int vek;
+
     }
 }

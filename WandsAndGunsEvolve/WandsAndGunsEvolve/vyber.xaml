@@ -11,14 +11,9 @@
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="10">
+            <StackPanel x:Name="Seznam" Margin="10">
                 <TextBlock x:Name="Vyber_jmeno" FontSize="36" Margin="10" TextAlignment="Center" FontWeight="Bold">Čeho je to vyber</TextBlock>
-                <Button x:Name="ID0" Height="50" BorderThickness="4" >
-                    <StackPanel Orientation="Horizontal" Height="40" Width="370" >
-                        <Image></Image>
-                        <TextBlock FontSize="24">Block blcok block </TextBlock>
-                    </StackPanel>
-                </Button>
+                
             </StackPanel>
         </ScrollViewer>
     </Grid>

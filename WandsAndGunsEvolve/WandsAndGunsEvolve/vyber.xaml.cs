@@ -21,18 +21,70 @@ namespace WandsAndGunsEvolve
     public partial class vyber : Page
     {
         private Frame VyvolavaciOkno;
-
+        int X;
+        int Y;
+        
         public vyber()
         {
             InitializeComponent();
+            povoleny_budovy();
         }
 
-        public vyber(Frame vyvolavac) : this()
+        public vyber(Frame vyvolavac,int x,int y) : this()
         {
             VyvolavaciOkno = vyvolavac;
 
-            VyvolavaciOkno.Width = 290;
-            VyvolavaciOkno.Height = 220;
+            VyvolavaciOkno.Width = 400;
+            VyvolavaciOkno.Height = 500;
+
+            X = x;
+            Y = y;
+        }
+
+        public void povoleny_budovy()
+        {
+            Button Domov = new Button();
+            Domov.Name = "Domov";
+            Domov.Height = 50;
+            Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+            Domov.Margin = new Thickness(5,5,5,5);
+            Domov.Click += new RoutedEventHandler(Vyber_Click);
+
+            StackPanel vnitrek = new StackPanel();
+            vnitrek.Orientation = Orientation.Horizontal; 
+
+            Image new_image = new Image();
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/domek.png", UriKind.Relative);
+            b.EndInit();
+
+            new_image.Source = b;
+            new_image.Height = 40;
+            new_image.Width = 40;
+
+            vnitrek.Children.Add(new_image);
+
+            TextBlock new_txt = new TextBlock();
+            new_txt.FontSize = 24;
+            new_txt.Text = "Domov";
+            
+            vnitrek.Children.Add(new_txt);
+            
+            Domov.Content = vnitrek;
+
+            Seznam.Children.Add(Domov);
+        }
+        private void Vyber_Click(object sender, RoutedEventArgs e)
+        {
+            Budova novy;
+            Button butt = sender as Button;
+            if (butt.Name == "Domov")
+            {
+                novy = new Domov() {X_radek = X , Y_sloupec = Y };
+                Vesnice.postaveni_do_vesnice(novy);
+                Vesnice.Ukonci_podokno();
+            }
         }
     }
 }
