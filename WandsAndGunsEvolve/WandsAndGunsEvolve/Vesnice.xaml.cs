@@ -88,7 +88,7 @@ namespace WandsAndGunsEvolve
                     {
                         b++;
                     }
-                    Budova novy = new Budova();
+                    Budova novy = new Prazdny_pozemek();
                     novy.X_radek = b;
                     novy.Y_sloupec = a;
 
@@ -174,7 +174,8 @@ namespace WandsAndGunsEvolve
                     ad++;
                 }
 
-                Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
+               Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
+               //podokno = Podokno;
             }
             
         }
@@ -293,8 +294,8 @@ namespace WandsAndGunsEvolve
 
         public void Vytvor_Lidi_Prvni()
         {
-            Postava Eidam = new Postava() { muzstvi = true };
-            Postava Mozzarella = new Postava() { muzstvi = false };
+            Postava Eidam = new Postava() { muzstvi = true, ID = 0 };
+            Postava Mozzarella = new Postava() { muzstvi = false, ID = 1 };
 
             Obyvatele.Add(Eidam);
             Obyvatele.Add(Mozzarella);

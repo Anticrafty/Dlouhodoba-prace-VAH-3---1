@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace WandsAndGunsEvolve
 {
-    public class Domov : Budova
+    class Prazdny_pozemek : Budova
     {
-
-        public Domov()
+        
+        public Prazdny_pozemek()
         {
-            obr_odkaz = @"domek.png";
-            Potreba_Na_Postaveni = 2;
+            Potreba_Na_Postaveni = 0;
+            Vyvoj_exist = false;
+            Uceni_exist = false;
+            Crafting_exist = false;
         }
 
         public override void Crafting()

@@ -55,11 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bezny_obyvatel.cs" />
     <Compile Include="Budova.cs" />
     <Compile Include="DialogovyFrame.xaml.cs">
       <DependentUpon>DialogovyFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Domov.cs" />
+    <Compile Include="Menu_budovy.xaml.cs">
+      <DependentUpon>Menu_budovy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NastaveniMenu.xaml.cs">
       <DependentUpon>NastaveniMenu.xaml</DependentUpon>
     </Compile>
@@ -67,6 +71,7 @@
     <Compile Include="potvrzeni.xaml.cs">
       <DependentUpon>potvrzeni.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Prazdny_pozemek.cs" />
     <Compile Include="Rozhovor.cs" />
     <Compile Include="Vesnice.xaml.cs">
       <DependentUpon>Vesnice.xaml</DependentUpon>
@@ -97,6 +102,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menu_budovy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NastaveniMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

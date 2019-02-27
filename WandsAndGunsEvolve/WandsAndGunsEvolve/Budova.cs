@@ -16,7 +16,15 @@ namespace WandsAndGunsEvolve
         public int Splneno_Na_Postaveni = 0;
         List<Postava> pracovnici = new List<Postava>();
 
+
+        public bool Vyvoj_exist;
+        public bool Uceni_exist;
+        public bool Crafting_exist;
+
+        public string akce_budovy;
+
         public abstract void Vyvoj();
         public abstract void Uceni();
+        public abstract void Crafting();
     }
 }
