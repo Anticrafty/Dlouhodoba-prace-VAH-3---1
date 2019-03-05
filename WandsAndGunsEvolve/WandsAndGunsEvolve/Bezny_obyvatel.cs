@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace WandsAndGunsEvolve
 {
-    class Bezny_obyvatel : Postava
+    public class Bezny_obyvatel : Postava
     {
-
+        public Bezny_obyvatel()
+        {
+            obr_odkaz = @"wallpaper-for-facebook-profile-photo.jpg";
+        }
     }
+        
 }

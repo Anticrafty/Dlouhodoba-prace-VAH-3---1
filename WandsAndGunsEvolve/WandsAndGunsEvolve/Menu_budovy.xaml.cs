@@ -38,6 +38,11 @@ namespace WandsAndGunsEvolve
             VyvolavaciOkno.Width = 450;
             VyvolavaciOkno.Height = 450;
 
+            foreach (Postava postava in Vesnice.Budovy[A][B].pracovnici)
+            {
+
+            }
+
             if(Vesnice.Budovy[A][B].Splneno_Na_Postaveni < Vesnice.Budovy[A][B].Potreba_Na_Postaveni)
             {
                 Vyvoj.IsEnabled = false;

@@ -9,6 +9,7 @@ namespace WandsAndGunsEvolve
     public class Postava
     {
         public int ID;
+        public string obr_odkaz;
         public int Max_Zivotu = 5;
         public int Utok = 1;
         public int Vzdalenost_Utoku = 1;
