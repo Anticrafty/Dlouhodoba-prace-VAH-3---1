@@ -34,6 +34,9 @@ namespace WandsAndGunsEvolve
             VyvolavaciOkno.Height = 450;
         }
 
-
+        private void Zpet_Click(object sender, RoutedEventArgs e)
+        {
+            Vesnice.Ukonci_podokno();
+        }
     }
 }
