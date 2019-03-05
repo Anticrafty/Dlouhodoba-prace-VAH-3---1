@@ -173,8 +173,11 @@ namespace WandsAndGunsEvolve
                     }
                     ad++;
                 }
-
-               Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
+               if (Budovy[aa][bb] is Domov)
+               {
+                    Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
+               }              
+               
                //podokno = Podokno;
             }
             

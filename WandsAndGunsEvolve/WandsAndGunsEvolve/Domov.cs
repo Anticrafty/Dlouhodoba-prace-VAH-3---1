@@ -29,5 +29,10 @@ namespace WandsAndGunsEvolve
         {
             throw new NotImplementedException();
         }
+
+        public void New_postava()
+        {
+
+        }
     }
 }

@@ -10,12 +10,14 @@
       Title="Menu_budovy">
 
     <Grid>
-        <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="450"  VerticalAlignment="Top" Width="450"/>
-        <Button Content="Svavba" HorizontalAlignment="Left" Margin="30,30" VerticalAlignment="Top" Width="100" Height="30"/>
-        <Button Content="Vývoj" HorizontalAlignment="Left" Margin="30,70" VerticalAlignment="Top" Width="100" Height="30"/>
-        <Button Content="Učeni" HorizontalAlignment="Left" Margin="30,110" VerticalAlignment="Top" Width="100" Height="30"/>
-        <Button Content="Crafting" HorizontalAlignment="Left" Margin="30,150" VerticalAlignment="Top" Width="100" Height="30"/>
-        <Button Content="Zpět" HorizontalAlignment="Left" Margin="30,190" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
+        <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="450"  VerticalAlignment="Top" Width="450">
+        </Border>
+        <Button x:Name="Stavba" Content="Svavba" HorizontalAlignment="Left" Margin="30,30" VerticalAlignment="Top" Width="100" Height="30" Click="Stavba_Click" />
+        <Button x:Name="Vyvoj" Content="Vývoj" HorizontalAlignment="Left" Margin="30,70" VerticalAlignment="Top" Width="100" Height="30"/>
+        <Button x:Name="Uceni" Content="Učeni" HorizontalAlignment="Left" Margin="30,110" VerticalAlignment="Top" Width="100" Height="30"/>
+        <Button x:Name="Craft" Content="Crafting" HorizontalAlignment="Left" Margin="30,150" VerticalAlignment="Top" Width="100" Height="30"/>
+        <Button x:Name="Mnozeni" Content="Množení" HorizontalAlignment="Left" Margin="30,190" VerticalAlignment="Top" Width="100" Height="30" Visibility="Collapsed"/>
+        <Button Content="Zpět" HorizontalAlignment="Left" Margin="30,400,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
         <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="430"  VerticalAlignment="Top" Width="250" Margin="165,10,0,0">
             <StackPanel Background="White"/>
         </Border>

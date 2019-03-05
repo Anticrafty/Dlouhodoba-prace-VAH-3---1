@@ -20,6 +20,8 @@ namespace WandsAndGunsEvolve
     /// </summary>
     public partial class Menu_budovy : Page
     {
+        int A;
+        int B;
         Frame VyvolavaciOkno;
         public Menu_budovy()
         {
@@ -30,8 +32,43 @@ namespace WandsAndGunsEvolve
         {
             VyvolavaciOkno = vyvolavac;
 
+            A = a;
+            B = b;
+
             VyvolavaciOkno.Width = 450;
             VyvolavaciOkno.Height = 450;
+
+            if(Vesnice.Budovy[A][B].Splneno_Na_Postaveni < Vesnice.Budovy[A][B].Potreba_Na_Postaveni)
+            {
+                Vyvoj.IsEnabled = false;
+                Uceni.IsEnabled = false;
+                Craft.IsEnabled = false;
+            }
+            else
+            {
+                Stavba.IsEnabled = false;
+                if (!Vesnice.Budovy[A][B].Vyvoj_exist)
+                {
+                    Vyvoj.IsEnabled = false;
+                }
+                if (!Vesnice.Budovy[A][B].Uceni_exist)
+                {
+                    Uceni.IsEnabled = false;
+                }
+                if (!Vesnice.Budovy[A][B].Crafting_exist)
+                {
+                    Craft.IsEnabled = false;
+                }
+                if(Vesnice.Budovy[A][B] is Domov)
+                {
+                    Mnozeni.Visibility = Visibility.Visible;
+                }
+            }
+        }
+        private void Stavba_Click(object sender, RoutedEventArgs e)
+        {
+            Vesnice.Budovy[A][B].Splneno_Na_Postaveni++;
+            Vesnice.Ukonci_podokno();
         }
 
         private void Zpet_Click(object sender, RoutedEventArgs e)

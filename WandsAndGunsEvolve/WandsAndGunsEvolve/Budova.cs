@@ -17,9 +17,9 @@ namespace WandsAndGunsEvolve
         List<Postava> pracovnici = new List<Postava>();
 
 
-        public bool Vyvoj_exist;
-        public bool Uceni_exist;
-        public bool Crafting_exist;
+        public bool Vyvoj_exist = false;
+        public bool Uceni_exist = false;
+        public bool Crafting_exist = false;
 
         public string akce_budovy;
 
