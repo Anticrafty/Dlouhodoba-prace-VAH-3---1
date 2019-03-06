@@ -103,7 +103,7 @@ namespace WandsAndGunsEvolve
                 Image new_image = new Image();
                 BitmapImage b = new BitmapImage();
                 b.BeginInit();
-                b.UriSource = new Uri("img/domek.png", UriKind.Relative);
+                b.UriSource = new Uri("img/"+ postava.obr_odkaz, UriKind.Relative);
                 b.EndInit();
 
                 new_image.Source = b;
@@ -112,15 +112,23 @@ namespace WandsAndGunsEvolve
 
                 vnitrek.Children.Add(new_image);
 
-                TextBlock new_txt = new TextBlock();
-                new_txt.FontSize = 24;
-                new_txt.Text = "Domov";
+                TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
+                vnitrek.Children.Add(Vek);
+                string pohlav = "pohlaví";
+                if (postava.muzstvi)
+                {
+                    pohlav = "muž";
+                }
+                else
+                {
+                    pohlav = "žena";
+                }
+                TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
+                vnitrek.Children.Add(Pohlavi);
 
-                vnitrek.Children.Add(new_txt);
+                Postava.Content = vnitrek;
 
-                Domov.Content = vnitrek;
-
-                Seznam.Children.Add(Domov);
+                Seznam.Children.Add(Postava);
             }
         }
 
@@ -134,7 +142,7 @@ namespace WandsAndGunsEvolve
                 Vesnice.postaveni_do_vesnice(novy);
                 Vesnice.Ukonci_podokno();
             }
-            if
+            //if
         }
     }
 }
