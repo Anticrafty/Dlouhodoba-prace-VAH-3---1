@@ -297,8 +297,8 @@ namespace WandsAndGunsEvolve
 
         public void Vytvor_Lidi_Prvni()
         {
-            Postava Eidam = new Postava() { muzstvi = true, ID = 0 };
-            Postava Mozzarella = new Postava() { muzstvi = false, ID = 1 };
+            Postava Eidam = new Bezny_obyvatel() { muzstvi = true, ID = 0 };
+            Postava Mozzarella = new Bezny_obyvatel() { muzstvi = false, ID = 1 };
 
             Obyvatele.Add(Eidam);
             Obyvatele.Add(Mozzarella);

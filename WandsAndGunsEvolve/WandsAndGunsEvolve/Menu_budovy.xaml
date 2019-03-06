@@ -20,14 +20,7 @@
         <Button Content="Zpět" HorizontalAlignment="Left" Margin="30,400,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
         <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="430"  VerticalAlignment="Top" Width="250" Margin="165,10,0,0">
             <StackPanel x:Name="pracovnici" Background="White">
-                <Border BorderBrush="Black" BorderThickness="3"  Width="230" Height="30" Margin="5">
-                    <StackPanel Orientation="Horizontal">
-                        <Border Margin="5,0"  BorderBrush="Black" BorderThickness="1" Height="20" Width="20" />
-                        <TextBlock Margin="5,0" Text="Věk: "/>
-                        <TextBlock Margin="5,0" Text=" Pohlaví: pohlaví"/>
-                        <Button Margin="5,0" Content="X" Height="20" Width="20" FontWeight="Bold" Foreground="Red"/>
-                    </StackPanel>
-                </Border>
+                
             </StackPanel>
         </Border>
     </Grid>

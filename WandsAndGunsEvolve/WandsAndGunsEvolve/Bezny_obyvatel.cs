@@ -10,7 +10,7 @@ namespace WandsAndGunsEvolve
     {
         public Bezny_obyvatel()
         {
-            obr_odkaz = @"wallpaper-for-facebook-profile-photo.jpg";
+            obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
         }
     }
         
