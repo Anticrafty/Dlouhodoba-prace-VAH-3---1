@@ -14,8 +14,9 @@ namespace WandsAndGunsEvolve
         public int X_radek;
         public int Potreba_Na_Postaveni;
         public int Splneno_Na_Postaveni = 0;
-        public List<Postava> pracovnici = new List<Postava>();
 
+        public List<Postava> pracovnici = new List<Postava>();
+        public string nastavena_akce;
 
         public bool Vyvoj_exist = false;
         public bool Uceni_exist = false;

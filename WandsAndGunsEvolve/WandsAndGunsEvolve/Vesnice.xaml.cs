@@ -29,7 +29,7 @@ namespace WandsAndGunsEvolve
 
 
         public Vesnice()
-        {            
+        {
 
             InitializeComponent();
             podokno = Podokno;
@@ -137,19 +137,19 @@ namespace WandsAndGunsEvolve
             int b = int.Parse(be);
             if (staveni_bool)
             {
-                
+
 
                 if (butt.BorderBrush == Brushes.Green)
                 {
-                    
+
                     Podokno.Navigate(new vyber(Podokno, b, a, "Budova"));
                 }
                 else
                 {
-                    Podokno.Navigate(new potvrzeni(Podokno, a, b));
+                    Podokno.Navigate(new potvrzeni(Podokno, a, b, "Stavba"));
                 }
                 OdStaveni();
-                podokno = Podokno;                
+                podokno = Podokno;
             }
             else
             {
@@ -173,23 +173,23 @@ namespace WandsAndGunsEvolve
                     }
                     ad++;
                 }
-               if (Budovy[aa][bb] is Domov)
-               {
+                if (Budovy[aa][bb] is Domov)
+                {
                     Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
-               }              
-               
-               //podokno = Podokno;
+                }
+
+                //podokno = Podokno;
             }
-            
+
         }
         private void Staveni_Click(object sender, RoutedEventArgs e)
         {
-            if(staveni_bool)
+            if (staveni_bool)
             {
                 OdStaveni();
             }
             else
-            { 
+            {
                 staveni_bool = true;
                 staveni.Background = Brushes.LightGreen;
                 foreach (Object obj in Vesnicoid.Children)
@@ -254,28 +254,28 @@ namespace WandsAndGunsEvolve
                 {
                     Button butt = obj as Button;
                     if (butt.Name == name)
-                    { 
+                    {
                         int ad = 0;
                         int bd = 0;
                         int aa = 0;
                         int bb = 0;
                         Image novy_img = new Image();
                         foreach (List<Budova> budovas in Budovy)
+                        {
+                            bd = 0;
+                            foreach (Budova budovan in budovas)
                             {
-                                bd = 0;
-                                foreach (Budova budovan in budovas)
+
+                                if (budovan.X_radek == nova_budova.X_radek && budovan.Y_sloupec == nova_budova.Y_sloupec)
                                 {
-
-                                    if (budovan.X_radek == nova_budova.X_radek && budovan.Y_sloupec == nova_budova.Y_sloupec)
-                                    {
-                                        aa = ad;
-                                        bb = bd;
-                                    }
-                                    bd++;
-
+                                    aa = ad;
+                                    bb = bd;
                                 }
-                                ad++;
+                                bd++;
+
                             }
+                            ad++;
+                        }
                         Budovy[aa][bb] = nova_budova;
                         BitmapImage bim = new BitmapImage();
                         bim.BeginInit();
@@ -284,15 +284,22 @@ namespace WandsAndGunsEvolve
                         novy_img.Source = bim;
 
                         butt.Content = novy_img;
+                        butt.Background = Brushes.IndianRed;
 
-                       
                     }
                 }
             }
         }
-        public static void Potvrzeni(int a,int b)
+        public static void Potvrzeni(int a, int b, string ceho)
         {
-            podokno.Navigate(new vyber(podokno, b, a, "Budova"));            
+            if (ceho == "Stavba")
+            {
+                podokno.Navigate(new vyber(podokno, b, a, "Budova"));
+            }
+            else if (ceho == "Kolo")
+            {
+                Dalsi_kolo();
+            }
         }
 
         public void Vytvor_Lidi_Prvni()
@@ -303,5 +310,39 @@ namespace WandsAndGunsEvolve
             Obyvatele.Add(Eidam);
             Obyvatele.Add(Mozzarella);
         }
-    }
+        private void Dalsi_kolo_Click(object sender, RoutedEventArgs e)
+        {
+            Podokno.Navigate(new potvrzeni(podokno, 0, 0, "Kolo"));
+        }
+        static private void Dalsi_kolo()
+        {
+            foreach (List<Budova> radek in Budovy)
+            {
+                foreach (Budova budova in radek)
+                {
+                    if (budova.nastavena_akce == "Stavba")
+                    {
+                        foreach (Postava pracovnik in budova.pracovnici)
+                        {
+                            budova.Splneno_Na_Postaveni = budova.Splneno_Na_Postaveni + pracovnik.Postava_za_Den;
+                        }
+                    }
+                    if (budova.Splneno_Na_Postaveni >= budova.Potreba_Na_Postaveni)
+                    {
+                        foreach (Object obj in vesnicoid.Children)
+                        {
+                            if (obj is Button)
+                            {
+                                Button butt = obj as Button;
+                                if (butt.Name == "Budova" + budova.Y_sloupec + budova.X_radek )
+                                {
+                                    butt.Background = Brushes.White;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
 }

@@ -156,10 +156,10 @@
     <Resource Include="img\nastaveni.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\domek.png" />
+    <Resource Include="img\hammer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\hammer.png" />
+    <Resource Include="img\domek.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,6 +23,7 @@ namespace WandsAndGunsEvolve
         private Frame VyvolavaciOkno;
         int A;
         int B;
+        string Co;
         public potvrzeni()
         {
            InitializeComponent();
@@ -30,7 +31,7 @@ namespace WandsAndGunsEvolve
             
         }
 
-        public potvrzeni(Frame vyvolavac, int a, int b) : this()
+        public potvrzeni(Frame vyvolavac, int a, int b,string co) : this()
         {
             VyvolavaciOkno = vyvolavac;
             VyvolavaciOkno.Width = 300;
@@ -38,6 +39,16 @@ namespace WandsAndGunsEvolve
 
             A = a;
             B = b;
+            Co = co;
+
+            if(co == "Stavba")
+            {
+                Nadpis.Text = "Chcete zbořit budovu na tomto pozemku?";
+            }
+            else if (co == "Kolo")
+            {
+                Nadpis.Text = "Chcete nové kolo?";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -46,7 +57,10 @@ namespace WandsAndGunsEvolve
             string content = butt.Content.ToString();
             if (content == "Ano")
             {
-                Vesnice.Potvrzeni(A,B);
+                
+                    Vesnice.Potvrzeni(A,B,Co);
+                    Vesnice.Ukonci_podokno();
+
             }
             else
             {

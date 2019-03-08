@@ -43,9 +43,7 @@ namespace WandsAndGunsEvolve
 
         public void pracovnici_zapis()
         {
-
-            Vesnice.Budovy[A][B].pracovnici = Vesnice.Obyvatele;
-
+            int number_in_list = 0;
             foreach (Postava postava in Vesnice.Budovy[A][B].pracovnici)
             {
                 Border okoli = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(3, 3, 3, 3), Width = 230, Height = 30, Margin = new Thickness(2, 2, 2, 2) };
@@ -70,13 +68,14 @@ namespace WandsAndGunsEvolve
                 }
                 TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
                 obsah.Children.Add(Pohlavi);
-                Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + postava.ID };
+                Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + number_in_list };
                 button.Click += new RoutedEventHandler(Odebrat_Click);
                 obsah.Children.Add(button);
 
                 okoli.Child = obsah;
 
                 pracovnici.Children.Add(okoli);
+                number_in_list++;
             }
 
             if (Vesnice.Budovy[A][B].Splneno_Na_Postaveni < Vesnice.Budovy[A][B].Potreba_Na_Postaveni)
@@ -109,8 +108,9 @@ namespace WandsAndGunsEvolve
     
         private void Stavba_Click(object sender, RoutedEventArgs e)
         {
-            Vesnice.Budovy[A][B].Splneno_Na_Postaveni++;
-            Vesnice.Ukonci_podokno();
+            //Vesnice.Budovy[A][B].Splneno_Na_Postaveni++;
+            Vesnice.Budovy[A][B].nastavena_akce = "Stavba";
+            VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno,A,B,"Postava"));
         }
 
         private void Zpet_Click(object sender, RoutedEventArgs e)

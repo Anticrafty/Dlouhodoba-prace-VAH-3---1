@@ -13,7 +13,7 @@
         <Grid>
             <Button Content="Ano" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Width="75" Background="Green" Click="Button_Click"/>
             <Button Content="Ne" HorizontalAlignment="Left" Margin="180,60,0,0" VerticalAlignment="Top" Width="75" Background="Red" Click="Button_Click"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,0,0,0" TextWrapping="Wrap" Text="Chcete zbořit budovu na tomto pozemku?" VerticalAlignment="Top" Height="55" Width="205" FontSize="20"/>
+            <TextBlock x:Name="Nadpis" HorizontalAlignment="Left" Margin="50,0,0,0" TextWrapping="Wrap" Text="Chcete zbořit budovu na tomto pozemku?" VerticalAlignment="Top" Height="55" Width="205" FontSize="20"/>
         </Grid>
     </Border>
 </Page>

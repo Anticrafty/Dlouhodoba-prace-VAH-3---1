@@ -18,6 +18,9 @@
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
             <StackPanel Background="LightGray">
+                <Button x:Name="dalsi_kolo" Height="40" Width="40" Margin="7" Click="Dalsi_kolo_Click">
+                    <Image x:Name="dalsi_okolo_img" Height="40" Width="40" />
+                </Button>
                 <Button x:Name="staveni" Height="40" Width="40" Margin="7" Click="Staveni_Click">
                     <Image x:Name="staveni_img" Height="40" Width="40" />
                 </Button>
