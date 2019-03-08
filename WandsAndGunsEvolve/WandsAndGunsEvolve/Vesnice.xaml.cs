@@ -341,6 +341,7 @@ namespace WandsAndGunsEvolve
                             }
                         }
                     }
+                    budova.pracovnici = new List<Postava>();
                 }
             }
         }
