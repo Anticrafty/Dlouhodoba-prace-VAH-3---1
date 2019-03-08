@@ -23,6 +23,9 @@ namespace WandsAndGunsEvolve
         private Frame VyvolavaciOkno;
         int X;
         int Y;
+        string What;
+
+        int urceni_obyvatele = 0;
 
         public vyber()
         {
@@ -39,6 +42,9 @@ namespace WandsAndGunsEvolve
 
             X = x;
             Y = y;
+            What = what;
+
+            
             if (what == "Budova")
             {
                 povoleny_budovy();
@@ -90,15 +96,22 @@ namespace WandsAndGunsEvolve
         {
             foreach (Postava postava in Vesnice.Obyvatele)
             {
-                bool alredy_in_there = false;
-                foreach (Postava pracovnik in Vesnice.Budovy[X][Y].pracovnici)
+                bool alredy_in_somewhere = false;
+                foreach (List<Budova> radek in Vesnice.Budovy)
                 {
-                    if (postava == pracovnik)
-                    {
-                        alredy_in_there = true;
+                    foreach(Budova budova in radek)
+                    { 
+                        foreach (Postava pracovnik in budova.pracovnici)
+                        {
+                            if (postava == pracovnik)
+                            {
+                                alredy_in_somewhere = true;
+                            }
+                        }
                     }
                 }
-                if (!alredy_in_there)
+                
+                if (!alredy_in_somewhere)
                 {
                     Button Postava = new Button();
                     Postava.Name = "ID" + postava.ID;
@@ -157,8 +170,24 @@ namespace WandsAndGunsEvolve
             }
             else if (butt.Name.Substring(0, 2) == "ID")
             {
+
                 Vesnice.Budovy[X][Y].pracovnici.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
-                Vesnice.Ukonci_podokno();
+                urceni_obyvatele++;
+                if (What == "Postava" || (What == "Mnozeni" && urceni_obyvatele == 2))
+                    Vesnice.Ukonci_podokno();
+                else
+                {
+                    int ID_obj = 0;
+                    foreach(Object obj in Seznam.Children)
+                    {
+                        if(obj is Button)
+                        {
+                            Seznam.Children[ID_obj].Visibility = Visibility.Collapsed;
+                        }
+                        ID_obj++;
+                    }
+                    povoleny_postavy();
+                }
             }
         }
 

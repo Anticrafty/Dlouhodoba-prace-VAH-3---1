@@ -27,6 +27,7 @@ namespace WandsAndGunsEvolve
         public bool staveni_bool = false;
         static public Grid vesnicoid;
 
+        static public Random rnd_s = new Random();
 
         public Vesnice()
         {
@@ -304,8 +305,8 @@ namespace WandsAndGunsEvolve
 
         public void Vytvor_Lidi_Prvni()
         {
-            Postava Eidam = new Bezny_obyvatel() { muzstvi = true, ID = 0 };
-            Postava Mozzarella = new Bezny_obyvatel() { muzstvi = false, ID = 1 };
+            Postava Eidam = new Bezny_obyvatel() { muzstvi = true, ID = 0, vek = 1 };
+            Postava Mozzarella = new Bezny_obyvatel() { muzstvi = false, ID = 1 , vek = 1};
 
             Obyvatele.Add(Eidam);
             Obyvatele.Add(Mozzarella);
@@ -341,8 +342,64 @@ namespace WandsAndGunsEvolve
                             }
                         }
                     }
+                    if (budova.nastavena_akce == "Mnozeni")
+                    {
+                        List<Postava> pouzity = new List<Postava>();
+                        Postava hleda = new Postava();
+                        foreach(Postava milenec in budova.pracovnici)
+                        {
+                            bool je_pouzity = false;
+                            foreach (Postava pouzita_postava in pouzity)
+                            {
+                                
+                                if(milenec == pouzita_postava)
+                                {
+                                    je_pouzity = true;
+                                }
+                            }
+
+
+                            if (!je_pouzity)
+                            {
+                                foreach(Postava milenka in budova.pracovnici)
+                                {
+                                    if(milenka != milenec)
+                                    {
+                                        bool je_pouzita = false;
+                                        foreach(Postava pouzita_postava in pouzity)
+                                        {
+                                            if (milenka == pouzita_postava)
+                                            {
+                                                je_pouzita = true;
+                                            }
+                                        }
+                                        if (!je_pouzita)
+                                        {
+                                            Postava novy = new Bezny_obyvatel { ID = Obyvatele.Count() };
+                                            if (rnd_s.Next(1, 3) == 1)
+                                            {
+                                                novy.muzstvi = true;
+                                            }
+                                            else
+                                            {
+                                                novy.muzstvi = false;
+                                            }
+                                            Obyvatele.Add(novy);
+                                            pouzity.Add(milenec);
+                                            pouzity.Add(milenka);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     budova.pracovnici = new List<Postava>();
                 }
+                
+            }
+            foreach (Postava obyvatel in Obyvatele)
+            {
+                obyvatel.vek++;
             }
         }
     }    

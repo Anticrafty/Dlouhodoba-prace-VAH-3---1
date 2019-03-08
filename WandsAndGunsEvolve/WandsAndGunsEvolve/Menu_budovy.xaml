@@ -16,7 +16,7 @@
         <Button x:Name="Vyvoj" Content="Vývoj" HorizontalAlignment="Left" Margin="30,70" VerticalAlignment="Top" Width="100" Height="30"/>
         <Button x:Name="Uceni" Content="Učeni" HorizontalAlignment="Left" Margin="30,110" VerticalAlignment="Top" Width="100" Height="30"/>
         <Button x:Name="Craft" Content="Crafting" HorizontalAlignment="Left" Margin="30,150" VerticalAlignment="Top" Width="100" Height="30"/>
-        <Button x:Name="Mnozeni" Content="Množení" HorizontalAlignment="Left" Margin="30,190" VerticalAlignment="Top" Width="100" Height="30" Visibility="Collapsed"/>
+        <Button x:Name="Mnozeni" Content="Množení" HorizontalAlignment="Left" Margin="30,190" VerticalAlignment="Top" Width="100" Height="30" Visibility="Collapsed" Click="Mnozeni_Click"/>
         <Button Content="Zpět" HorizontalAlignment="Left" Margin="30,400,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
         <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="430"  VerticalAlignment="Top" Width="250" Margin="165,10,0,0">
             <StackPanel x:Name="pracovnici" Background="White">

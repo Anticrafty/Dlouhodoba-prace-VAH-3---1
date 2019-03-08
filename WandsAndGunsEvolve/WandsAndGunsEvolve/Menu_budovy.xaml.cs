@@ -113,6 +113,12 @@ namespace WandsAndGunsEvolve
             VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno,A,B,"Postava"));
         }
 
+        public void Mnozeni_Click(object sender, RoutedEventArgs e)
+        {
+            Vesnice.Budovy[A][B].nastavena_akce = "Mnozeni";
+            VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, A, B, "Mnozeni"));
+        }
+
         private void Zpet_Click(object sender, RoutedEventArgs e)
         {
             Vesnice.Ukonci_podokno();

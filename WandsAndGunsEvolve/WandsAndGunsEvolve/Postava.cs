@@ -15,7 +15,7 @@ namespace WandsAndGunsEvolve
         public int Vzdalenost_Utoku = 1;
         public int Obrana = 0;
         public int Postava_za_Den = 1;
-        public int vek = 1;
+        public int vek = 0;
         public bool muzstvi;
 
     }
