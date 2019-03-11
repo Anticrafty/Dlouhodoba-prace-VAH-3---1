@@ -60,6 +60,7 @@
     <Compile Include="DialogovyFrame.xaml.cs">
       <DependentUpon>DialogovyFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dilna.cs" />
     <Compile Include="Domov.cs" />
     <Compile Include="Menu_budovy.xaml.cs">
       <DependentUpon>Menu_budovy.xaml</DependentUpon>
@@ -160,6 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\domek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Pokracovat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\panacek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Dilna.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

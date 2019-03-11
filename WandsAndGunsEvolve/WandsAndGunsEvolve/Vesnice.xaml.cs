@@ -26,6 +26,7 @@ namespace WandsAndGunsEvolve
         public static List<Postava> Obyvatele = new List<Postava>();
         public bool staveni_bool = false;
         static public Grid vesnicoid;
+        static public TextBlock Obyvatel_count;
 
         static public Random rnd_s = new Random();
 
@@ -35,6 +36,7 @@ namespace WandsAndGunsEvolve
             InitializeComponent();
             podokno = Podokno;
             vesnicoid = Vesnicoid;
+            Obyvatel_count = postavy_count;
         }
 
         public Vesnice(Frame Window) : this()
@@ -60,11 +62,28 @@ namespace WandsAndGunsEvolve
 
             staveni_img.Source = b;
 
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/Pokracovat.png", UriKind.Relative);
+            b.EndInit();
+
+            dalsi_okolo_img.Source = b;
+
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/panacek.png", UriKind.Relative);
+            b.EndInit();
+
+            postavy_img.Source = b;
+
             Vytvor_Lidi_Prvni();
+
+            prepocitej_postavy();
         }
         static public void Ukonci_podokno()
         {
             podokno.Navigate(null);
+            prepocitej_postavy();
         }
 
         private void Nastaveni_Click(object sender, RoutedEventArgs e)
@@ -174,7 +193,7 @@ namespace WandsAndGunsEvolve
                     }
                     ad++;
                 }
-                if (Budovy[aa][bb] is Domov)
+                if (Budovy[aa][bb] is Domov || Budovy[aa][bb] is Dilna)
                 {
                     Podokno.Navigate(new Menu_budovy(Podokno, aa, bb));
                 }
@@ -394,6 +413,7 @@ namespace WandsAndGunsEvolve
                         }
                     }
                     budova.pracovnici = new List<Postava>();
+
                 }
                 
             }
@@ -401,6 +421,38 @@ namespace WandsAndGunsEvolve
             {
                 obyvatel.vek++;
             }
+            prepocitej_postavy();
+        }
+
+        static public void prepocitej_postavy()
+        {
+            int count_postav = 0;
+            foreach( Postava obyvatel in Obyvatele )
+            {
+                bool nepracuje = true;
+                foreach ( List<Budova> radek in Budovy)
+                {
+                    foreach( Budova budova in radek)
+                    {
+                        foreach(Postava pracovnik in budova.pracovnici)
+                        {
+                            if(obyvatel == pracovnik)
+                            {
+                                nepracuje = false;
+                            }
+                        }
+                    }
+                }
+                if(nepracuje)
+                {
+                    count_postav++;
+                }
+            }
+            Obyvatel_count.Text = count_postav + " / " + Obyvatele.Count();
+        }
+        private void Postava_Click(object sender, RoutedEventArgs e)
+        {
+            podokno.Navigate(new vyber(podokno, 0, 0, "Obyvatel"));
         }
     }    
 }

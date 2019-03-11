@@ -53,7 +53,14 @@ namespace WandsAndGunsEvolve
             else
             {
                 povoleny_postavy();
-                Vyber_jmeno.Text = "Vyber Postavu";
+                if (What == "Obyvatel")
+                {
+                    Vyber_jmeno.Text = "Obyvatelé";
+                }
+                else
+                {
+                    Vyber_jmeno.Text = "Vyber Postavu";
+                }
             }
         }
 
@@ -90,6 +97,40 @@ namespace WandsAndGunsEvolve
             Domov.Content = vnitrek;
 
             Seznam.Children.Add(Domov);
+
+            //
+
+            Domov = new Button();
+            Domov.Name = "Dilna";
+            Domov.Height = 50;
+            Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+            Domov.Margin = new Thickness(5, 5, 5, 5);
+            Domov.Click += new RoutedEventHandler(Vyber_Click);
+
+            vnitrek = new StackPanel();
+            vnitrek.Orientation = Orientation.Horizontal;
+
+            new_image = new Image();
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/Dilna.png", UriKind.Relative);
+            b.EndInit();
+
+            new_image.Source = b;
+            new_image.Height = 40;
+            new_image.Width = 40;
+
+            vnitrek.Children.Add(new_image);
+
+            new_txt = new TextBlock();
+            new_txt.FontSize = 24;
+            new_txt.Text = "Dilna";
+
+            vnitrek.Children.Add(new_txt);
+
+            Domov.Content = vnitrek;
+
+            Seznam.Children.Add(Domov);
         }
 
         public void povoleny_postavy()
@@ -111,49 +152,62 @@ namespace WandsAndGunsEvolve
                     }
                 }
                 
-                if (!alredy_in_somewhere)
+                
+                Button Postava = new Button();
+                Postava.Name = "ID" + postava.ID;
+                Postava.Height = 50;
+                Postava.BorderThickness = new Thickness(5, 5, 5, 5);
+                Postava.Margin = new Thickness(5, 5, 5, 5);
+                if (What == "Obyvatel")
                 {
-                    Button Postava = new Button();
-                    Postava.Name = "ID" + postava.ID;
-                    Postava.Height = 50;
-                    Postava.BorderThickness = new Thickness(5, 5, 5, 5);
-                    Postava.Margin = new Thickness(5, 5, 5, 5);
+                    Postava.Click += new RoutedEventHandler(Rodiny_strom_Click);
+                }
+                else
+                {
                     Postava.Click += new RoutedEventHandler(Vyber_Click);
+                }
+                if(What == "Obyvatel" && alredy_in_somewhere)
+                {
+                    Postava.BorderBrush = Brushes.DarkRed;
+                }
 
-                    StackPanel vnitrek = new StackPanel();
-                    vnitrek.Orientation = Orientation.Horizontal;
+                StackPanel vnitrek = new StackPanel();
+                vnitrek.Orientation = Orientation.Horizontal;
 
-                    Image new_image = new Image();
-                    BitmapImage b = new BitmapImage();
-                    b.BeginInit();
-                    b.UriSource = new Uri("img/" + postava.obr_odkaz, UriKind.Relative);
-                    b.EndInit();
+                Image new_image = new Image();
+                BitmapImage b = new BitmapImage();
+                b.BeginInit();
+                b.UriSource = new Uri("img/" + postava.obr_odkaz, UriKind.Relative);
+                b.EndInit();
 
-                    new_image.Source = b;
-                    new_image.Height = 40;
-                    new_image.Width = 40;
+                new_image.Source = b;
+                new_image.Height = 40;
+                new_image.Width = 40;
 
-                    vnitrek.Children.Add(new_image);
+                vnitrek.Children.Add(new_image);
 
-                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
-                    vnitrek.Children.Add(Vek);
-                    string pohlav = "pohlaví";
-                    if (postava.muzstvi)
-                    {
-                        pohlav = "muž";
-                    }
-                    else
-                    {
-                        pohlav = "žena";
-                    }
-                    TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
-                    vnitrek.Children.Add(Pohlavi);
+                TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
+                vnitrek.Children.Add(Vek);
+                string pohlav = "pohlaví";
+                if (postava.muzstvi)
+                {
+                    pohlav = "muž";
+                }
+                else
+                {
+                    pohlav = "žena";
+                }
+                TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
+                vnitrek.Children.Add(Pohlavi);
 
-                    Postava.Content = vnitrek;
-
+                Postava.Content = vnitrek;
+                if (alredy_in_somewhere && (What == "Postava" || What == "Mnozeni"))
+                {
+                    
+                }
+                else
+                {
                     Seznam.Children.Add(Postava);
-
-
                 }
             }
         }
@@ -168,6 +222,13 @@ namespace WandsAndGunsEvolve
                 Vesnice.postaveni_do_vesnice(novy);
                 Vesnice.Ukonci_podokno();
             }
+            else if (butt.Name == "Dilna")
+            {
+                novy = new Dilna() { X_radek = X, Y_sloupec = Y };
+                Vesnice.postaveni_do_vesnice(novy);
+                Vesnice.Ukonci_podokno();
+
+            }
             else if (butt.Name.Substring(0, 2) == "ID")
             {
 
@@ -180,15 +241,25 @@ namespace WandsAndGunsEvolve
                     int ID_obj = 0;
                     foreach(Object obj in Seznam.Children)
                     {
-                        if(obj is Button)
+                        if (obj is Button)
                         {
-                            Seznam.Children[ID_obj].Visibility = Visibility.Collapsed;
+                            butt = obj as Button;
+                            if (butt.Content.ToString() != "Zpět")
+                            {
+                                Seznam.Children[ID_obj].Visibility = Visibility.Collapsed;
+                            }
+                                
                         }
                         ID_obj++;
                     }
                     povoleny_postavy();
                 }
             }
+        }
+
+        private void Rodiny_strom_Click(object sender, RoutedEventArgs e)
+        {
+            Vesnice.Ukonci_podokno();
         }
 
         private void Zpet_Click(object sender, RoutedEventArgs e)

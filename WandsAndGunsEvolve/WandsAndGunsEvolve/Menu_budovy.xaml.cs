@@ -87,15 +87,15 @@ namespace WandsAndGunsEvolve
             else
             {
                 Stavba.IsEnabled = false;
-                if (!Vesnice.Budovy[A][B].Vyvoj_exist)
+                if (!Vesnice.Budovy[A][B].Vyvoj_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Stavba"))
                 {
                     Vyvoj.IsEnabled = false;
                 }
-                if (!Vesnice.Budovy[A][B].Uceni_exist)
+                if (!Vesnice.Budovy[A][B].Uceni_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Uceni"))
                 {
                     Uceni.IsEnabled = false;
                 }
-                if (!Vesnice.Budovy[A][B].Crafting_exist)
+                if (!Vesnice.Budovy[A][B].Crafting_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Craft"))
                 {
                     Craft.IsEnabled = false;
                 }

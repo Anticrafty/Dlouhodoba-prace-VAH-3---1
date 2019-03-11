@@ -12,8 +12,11 @@
     <Grid>
         
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="60" Width="780" Margin="10,10,0,0">
-            <StackPanel Background="LightGray">
-
+            <StackPanel Background="LightGray" Orientation="Horizontal" >
+                <Button x:Name="postavy" Height="40" Width="40" Margin="7" Click="Postava_Click">
+                    <Image x:Name="postavy_img" Height="40" Width="40" />
+                </Button>
+                <TextBlock x:Name="postavy_count" Text="0 / 0" HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
@@ -194,6 +197,8 @@
             </Border>
         </Border>
         <Button Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button Margin="83,0,0,237" Height="100" Width="19" Background="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button Margin="0,0,13,237" Height="100" Width="19" Background="SaddleBrown" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
 
         <Frame Height="350" Width="600" x:Name="Podokno" HorizontalAlignment="Center" VerticalAlignment="Center" ></Frame>
     </Grid>
