@@ -37,7 +37,7 @@ namespace WandsAndGunsEvolve
 
             BitmapImage b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/" + dialog.obr_odkaz,UriKind.Relative);
+            b.UriSource = new Uri("../img/" + dialog.obr_odkaz,UriKind.Relative);
             b.EndInit();
 
             Dialog = dialog;

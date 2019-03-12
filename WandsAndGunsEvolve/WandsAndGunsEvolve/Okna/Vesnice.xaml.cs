@@ -26,11 +26,16 @@ namespace WandsAndGunsEvolve
         static public TextBlock Obyvatel_count;
         static public TextBlock Mornin_wood;
         static public TextBlock Stone_Hard;
+        static public TextBlock Juicy;
+
+        static public List<Postava> Drevorub = new List<Postava>();
+        static public List<Postava> Kamenolomec = new List<Postava>();
 
         public static List<List<Budova>> Budovy = new List<List<Budova>>();
         public static List<Postava> Obyvatele = new List<Postava>();
         static public int drevo = 50;
         static public int kamen = 20;
+        static public int jidlo = 14;
 
         public bool staveni_bool = false;
         static public Random rnd_s = new Random();
@@ -44,6 +49,7 @@ namespace WandsAndGunsEvolve
             Obyvatel_count = postavy_count;
             Mornin_wood = Drevo_count;
             Stone_Hard = Kamen_count;
+            Juicy = Jidlo_count;
         }
 
         public Vesnice(Frame Window) : this()
@@ -56,7 +62,7 @@ namespace WandsAndGunsEvolve
             //nastaveni
             BitmapImage b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/nastaveni.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/nastaveni.png", UriKind.Relative);
             b.EndInit();
 
             nastaveni_img.Source = b;
@@ -64,35 +70,35 @@ namespace WandsAndGunsEvolve
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/hammer.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/hammer.png", UriKind.Relative);
             b.EndInit();
 
             staveni_img.Source = b;
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/Pokracovat.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/Pokracovat.png", UriKind.Relative);
             b.EndInit();
 
             dalsi_okolo_img.Source = b;
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/panacek.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/panacek.png", UriKind.Relative);
             b.EndInit();
 
             postavy_img.Source = b;
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/wood.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/wood.png", UriKind.Relative);
             b.EndInit();
 
             Drevo_img.Source = b;
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/sutr.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/sutr.png", UriKind.Relative);
             b.EndInit();
 
             Kamen_img.Source = b;
@@ -149,7 +155,7 @@ namespace WandsAndGunsEvolve
 
                     BitmapImage bit = new BitmapImage();
                     bit.BeginInit();
-                    bit.UriSource = new Uri(@"img/" + novy.obr_odkaz, UriKind.Relative);
+                    bit.UriSource = new Uri(@"../img/" + novy.obr_odkaz, UriKind.Relative);
                     bit.EndInit();
 
                     Image obrazecek = new Image();
@@ -320,9 +326,11 @@ namespace WandsAndGunsEvolve
                             ad++;
                         }
                         Budovy[aa][bb] = nova_budova;
+                        drevo = drevo - nova_budova.potreba_dreva;
+                        kamen = kamen - nova_budova.potreba_kamene;
                         BitmapImage bim = new BitmapImage();
                         bim.BeginInit();
-                        bim.UriSource = new Uri("img/" + Budovy[aa][bb].obr_odkaz, UriKind.Relative);
+                        bim.UriSource = new Uri("../img/" + Budovy[aa][bb].obr_odkaz, UriKind.Relative);
                         bim.EndInit();
                         novy_img.Source = bim;
 
@@ -389,14 +397,25 @@ namespace WandsAndGunsEvolve
                             }
                         }
                     }
-                    
+                    budova.pracovnici = new List<Postava>();
 
                 }
                 
             }
+            foreach(Postava delnik in Drevorub)
+            {
+                drevo = drevo + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
+            }
+            Drevorub = new List<Postava>();
+            foreach (Postava delnik in Kamenolomec)
+            {
+                kamen = kamen + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
+            }
+            Kamenolomec = new List<Postava>();
             foreach (Postava obyvatel in Obyvatele)
             {
                 obyvatel.vek++;
+                jidlo--;
             }
             prepocitej_postavy();
             prepocitej_suroviny();
@@ -421,7 +440,21 @@ namespace WandsAndGunsEvolve
                         }
                     }
                 }
-                if(nepracuje)
+                foreach( Postava delnik in Drevorub)
+                {
+                    if (obyvatel == delnik)
+                    {
+                        nepracuje = false;
+                    }
+                }
+                foreach (Postava delnik in Kamenolomec)
+                {
+                    if (obyvatel == delnik)
+                    {
+                        nepracuje = false;
+                    }
+                }
+                if (nepracuje)
                 {
                     count_postav++;
                 }
@@ -433,11 +466,24 @@ namespace WandsAndGunsEvolve
         {
             Mornin_wood.Text = drevo.ToString();
             Stone_Hard.Text = kamen.ToString();
-            
+            Juicy.Text = jidlo.ToString();
         }
         private void Postava_Click(object sender, RoutedEventArgs e)
         {
             podokno.Navigate(new vyber(podokno, 0, 0, "Obyvatel"));
+        }
+
+        private void Tezeni_Click(object sender, RoutedEventArgs e)
+        {
+            Button butt = sender as Button;
+            if(butt.Name == "drevorubec")
+            {
+                Podokno.Navigate(new Menu_budovy(Podokno, -1, -1));
+            }
+            else
+            {
+                Podokno.Navigate(new Menu_budovy(Podokno, -2, -2));
+            }
         }
     }    
 }

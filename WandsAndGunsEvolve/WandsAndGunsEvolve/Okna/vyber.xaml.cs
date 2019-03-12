@@ -77,12 +77,32 @@ namespace WandsAndGunsEvolve
                     }
                 }
             }
-            vytvor_butt("Domov", "domek.png", 50 , 20);
+            bool dostatek_dreva = false;
+            if (Vesnice.drevo > 49)
+            {
+                dostatek_dreva = true;
+            }
+            bool dostatek_kamene = false;
+            if(Vesnice.kamen > 19 )
+            {
+                dostatek_kamene = true;
+            }
+            vytvor_butt("Domov", "domek.png", 50 , 20 , dostatek_dreva, dostatek_kamene);
 
             //
             if (je_dum)
             {
-                vytvor_butt("Dilna","Dilna.png", 50 , 100 );
+                dostatek_dreva = false;
+                if (Vesnice.drevo > 49)
+                {
+                    dostatek_dreva = true;
+                }
+                dostatek_kamene = false;
+                if (Vesnice.kamen > 99)
+                {
+                    dostatek_kamene = true;
+                }
+                vytvor_butt("Dilna","Dilna.png", 50 , 100, dostatek_dreva, dostatek_kamene);
                
             }
             
@@ -106,8 +126,22 @@ namespace WandsAndGunsEvolve
                         }
                     }
                 }
-                
-                
+                foreach (Postava delnik in Vesnice.Drevorub)
+                {
+                    if (postava == delnik)
+                    {
+                        alredy_in_somewhere = true;
+                    }
+                }
+                foreach(Postava delnik in Vesnice.Kamenolomec)
+                {
+                    if (postava == delnik)
+                    {
+                        alredy_in_somewhere = true;
+                    }
+                }
+
+
                 Button Postava = new Button();
                 Postava.Name = "ID" + postava.ID;
                 Postava.Height = 50;
@@ -132,7 +166,7 @@ namespace WandsAndGunsEvolve
                 Image new_image = new Image();
                 BitmapImage b = new BitmapImage();
                 b.BeginInit();
-                b.UriSource = new Uri("img/" + postava.obr_odkaz, UriKind.Relative);
+                b.UriSource = new Uri("../img/" + postava.obr_odkaz, UriKind.Relative);
                 b.EndInit();
 
                 new_image.Source = b;
@@ -186,8 +220,18 @@ namespace WandsAndGunsEvolve
             }
             else if (butt.Name.Substring(0, 2) == "ID")
             {
-
-                Vesnice.Budovy[X][Y].pracovnici.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
+                if (X == -1 || Y == -1)
+                {
+                    Vesnice.Drevorub.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
+                }
+                else if(X == -2 || Y == -2)
+                {
+                    Vesnice.Kamenolomec.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
+                }
+                else
+                {
+                    Vesnice.Budovy[X][Y].pracovnici.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
+                }
                 urceni_obyvatele++;
                 if (What == "Postava" || (What == "Mnozeni" && urceni_obyvatele == 2))
                     Vesnice.Ukonci_podokno();
@@ -222,7 +266,7 @@ namespace WandsAndGunsEvolve
             Vesnice.Ukonci_podokno();
         }
 
-        private void vytvor_butt(string name, string odkaz_img, int drevo, int kamen)
+        private void vytvor_butt(string name, string odkaz_img, int drevo, int kamen, bool dostatek_dreva, bool dostatek_kamene)
         {
             Button Domov = new Button();
             Domov.Name = name;
@@ -230,6 +274,10 @@ namespace WandsAndGunsEvolve
             Domov.BorderThickness = new Thickness(5, 5, 5, 5);
             Domov.Margin = new Thickness(5, 5, 5, 5);
             Domov.Click += new RoutedEventHandler(Vyber_Click);
+            if (!dostatek_kamene || !dostatek_dreva )
+            {
+                Domov.IsEnabled = false;
+            }
 
             StackPanel vnitrek = new StackPanel();
             vnitrek.Orientation = Orientation.Horizontal;
@@ -237,7 +285,7 @@ namespace WandsAndGunsEvolve
             Image new_image = new Image();
             BitmapImage b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("img/" + odkaz_img, UriKind.Relative);
+            b.UriSource = new Uri("../img/" + odkaz_img, UriKind.Relative);
             b.EndInit();
 
             new_image.Source = b;
@@ -255,12 +303,26 @@ namespace WandsAndGunsEvolve
             new_txt = new TextBlock();
             new_txt.FontSize = 12;
             new_txt.Text = "drevo: " + drevo;
+            new_txt.Height = 20;
+            new_txt.Margin = new Thickness(10, 0, 0, 0);
+            new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+            if (!dostatek_dreva)
+            {
+                new_txt.Foreground = Brushes.Red;
+            }
 
             vnitrek.Children.Add(new_txt);
 
             new_txt = new TextBlock();
             new_txt.FontSize = 12;
             new_txt.Text = "kamen: " + kamen;
+            new_txt.Height = 20;
+            new_txt.Margin = new Thickness(10, 0, 0, 0);
+            new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+            if (!dostatek_kamene)
+            {
+                new_txt.Foreground = Brushes.Red;
+            }
 
             vnitrek.Children.Add(new_txt);
 

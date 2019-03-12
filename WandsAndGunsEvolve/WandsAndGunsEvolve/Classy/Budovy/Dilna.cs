@@ -15,6 +15,8 @@ namespace WandsAndGunsEvolve
             Crafting_exist = true;
             Uceni_exist = true;
             Vyvoj_exist = true;
+            potreba_dreva = 50;
+            potreba_kamene = 100;
         }
 
         public override void Crafting()

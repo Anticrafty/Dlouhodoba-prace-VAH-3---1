@@ -55,36 +55,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Bezny_obyvatel.cs" />
-    <Compile Include="Budova.cs" />
-    <Compile Include="DialogovyFrame.xaml.cs">
+    <Compile Include="Classy\Postavy\Bezny_obyvatel.cs" />
+    <Compile Include="Classy\Budovy\Budova.cs" />
+    <Compile Include="Okna\DialogovyFrame.xaml.cs">
       <DependentUpon>DialogovyFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dilna.cs" />
-    <Compile Include="Domov.cs" />
-    <Compile Include="Menu_budovy.xaml.cs">
+    <Compile Include="Classy\Budovy\Dilna.cs" />
+    <Compile Include="Classy\Budovy\Domov.cs" />
+    <Compile Include="Okna\Menu_budovy.xaml.cs">
       <DependentUpon>Menu_budovy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NastaveniMenu.xaml.cs">
+    <Compile Include="Okna\NastaveniMenu.xaml.cs">
       <DependentUpon>NastaveniMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Postava.cs" />
-    <Compile Include="potvrzeni.xaml.cs">
+    <Compile Include="Classy\Postavy\Postava.cs" />
+    <Compile Include="Okna\potvrzeni.xaml.cs">
       <DependentUpon>potvrzeni.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Prazdny_pozemek.cs" />
-    <Compile Include="Rozhovor.cs" />
-    <Compile Include="Vesnice.xaml.cs">
+    <Compile Include="Classy\Budovy\Prazdny_pozemek.cs" />
+    <Compile Include="Classy\Rozhovor.cs" />
+    <Compile Include="Okna\Vesnice.xaml.cs">
       <DependentUpon>Vesnice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vyber.xaml.cs">
+    <Compile Include="Okna\vyber.xaml.cs">
       <DependentUpon>vyber.xaml</DependentUpon>
     </Compile>
-    <Page Include="DialogovyFrame.xaml">
+    <Page Include="Okna\DialogovyFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainMenu.xaml">
+    <Page Include="Okna\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,30 +96,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.xaml.cs">
+    <Compile Include="Okna\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Menu_budovy.xaml">
+    <Page Include="Okna\Menu_budovy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NastaveniMenu.xaml">
+    <Page Include="Okna\NastaveniMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="potvrzeni.xaml">
+    <Page Include="Okna\potvrzeni.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vesnice.xaml">
+    <Page Include="Okna\Vesnice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="vyber.xaml">
+    <Page Include="Okna\vyber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

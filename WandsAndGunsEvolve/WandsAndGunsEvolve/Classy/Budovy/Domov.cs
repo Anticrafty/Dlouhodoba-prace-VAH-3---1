@@ -13,6 +13,8 @@ namespace WandsAndGunsEvolve
         {
             obr_odkaz = @"domek.png";
             Potreba_Na_Postaveni = 2;
+            potreba_dreva = 50;
+            potreba_kamene = 20;
         }
 
         public override void Crafting()
@@ -49,6 +51,10 @@ namespace WandsAndGunsEvolve
                                 foreach (Postava pouzita_postava in pouzity)
                                 {
                                     if (milenka == pouzita_postava)
+                                    {
+                                        je_pouzita = true;
+                                    }
+                                    if(milenec.muzstvi != milenka.muzstvi)
                                     {
                                         je_pouzita = true;
                                     }

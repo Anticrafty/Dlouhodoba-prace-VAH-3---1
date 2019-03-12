@@ -21,6 +21,8 @@
                 <TextBlock x:Name="Drevo_count" Text=" 0 " HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
                 <Image x:Name="Kamen_img" Height="40" Width="40" Margin="5"/>
                 <TextBlock x:Name="Kamen_count" Text=" 0 " HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
+                <Image x:Name="Jidlo_img" Height="40" Width="40" Margin="5"/>
+                <TextBlock x:Name="Jidlo_count" Text=" 0 " HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
@@ -200,9 +202,9 @@
                 </Grid>
             </Border>
         </Border>
-        <Button x:Name="kamenolom" Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
-        <Button x:Name="drevorubec" Margin="83,0,0,237" Height="100" Width="19" Background="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="3" />
-        <Button x:Name="brana" Margin="0,0,18,237" Height="100" Width="19" Background="SaddleBrown" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button x:Name="brana" Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button x:Name="kamenolom" Margin="83,0,0,237" Height="100" Width="19" Background="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="3" Click="Tezeni_Click" />
+        <Button x:Name="drevorubec"  Margin="0,0,18,237" Height="100" Width="19" Background="SaddleBrown" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3"  Click="Tezeni_Click" />
 
         <Frame Height="350" Width="600" x:Name="Podokno" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
