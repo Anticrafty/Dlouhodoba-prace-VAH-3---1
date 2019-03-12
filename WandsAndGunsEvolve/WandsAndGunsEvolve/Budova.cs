@@ -15,6 +15,7 @@ namespace WandsAndGunsEvolve
         public int Potreba_Na_Postaveni;
         public int Splneno_Na_Postaveni = 0;
 
+
         public List<Postava> pracovnici = new List<Postava>();
         public string nastavena_akce;
 
@@ -24,8 +25,11 @@ namespace WandsAndGunsEvolve
 
         public string akce_budovy;
 
+        public abstract void Do();
+
         public abstract void Vyvoj();
         public abstract void Uceni();
         public abstract void Crafting();
+
     }
 }

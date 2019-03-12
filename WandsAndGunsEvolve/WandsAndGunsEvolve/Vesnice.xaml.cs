@@ -22,12 +22,17 @@ namespace WandsAndGunsEvolve
     {
         private Frame PredchoziOkno;
         public static Frame podokno;
-        public static List<List<Budova>> Budovy = new List<List<Budova>>();
-        public static List<Postava> Obyvatele = new List<Postava>();
-        public bool staveni_bool = false;
         static public Grid vesnicoid;
         static public TextBlock Obyvatel_count;
+        static public TextBlock Mornin_wood;
+        static public TextBlock Stone_Hard;
 
+        public static List<List<Budova>> Budovy = new List<List<Budova>>();
+        public static List<Postava> Obyvatele = new List<Postava>();
+        static public int drevo = 50;
+        static public int kamen = 20;
+
+        public bool staveni_bool = false;
         static public Random rnd_s = new Random();
 
         public Vesnice()
@@ -37,6 +42,8 @@ namespace WandsAndGunsEvolve
             podokno = Podokno;
             vesnicoid = Vesnicoid;
             Obyvatel_count = postavy_count;
+            Mornin_wood = Drevo_count;
+            Stone_Hard = Kamen_count;
         }
 
         public Vesnice(Frame Window) : this()
@@ -76,14 +83,30 @@ namespace WandsAndGunsEvolve
 
             postavy_img.Source = b;
 
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/wood.png", UriKind.Relative);
+            b.EndInit();
+
+            Drevo_img.Source = b;
+
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/sutr.png", UriKind.Relative);
+            b.EndInit();
+
+            Kamen_img.Source = b;
+
             Vytvor_Lidi_Prvni();
 
             prepocitej_postavy();
+            prepocitej_suroviny();
         }
         static public void Ukonci_podokno()
         {
             podokno.Navigate(null);
             prepocitej_postavy();
+            prepocitej_suroviny();
         }
 
         private void Nastaveni_Click(object sender, RoutedEventArgs e)
@@ -347,6 +370,11 @@ namespace WandsAndGunsEvolve
                             budova.Splneno_Na_Postaveni = budova.Splneno_Na_Postaveni + pracovnik.Postava_za_Den;
                         }
                     }
+                    else if (budova.nastavena_akce != null)
+                    {
+                        budova.Do();
+                    }
+
                     if (budova.Splneno_Na_Postaveni >= budova.Potreba_Na_Postaveni)
                     {
                         foreach (Object obj in vesnicoid.Children)
@@ -361,58 +389,7 @@ namespace WandsAndGunsEvolve
                             }
                         }
                     }
-                    if (budova.nastavena_akce == "Mnozeni")
-                    {
-                        List<Postava> pouzity = new List<Postava>();
-                        Postava hleda = new Postava();
-                        foreach(Postava milenec in budova.pracovnici)
-                        {
-                            bool je_pouzity = false;
-                            foreach (Postava pouzita_postava in pouzity)
-                            {
-                                
-                                if(milenec == pouzita_postava)
-                                {
-                                    je_pouzity = true;
-                                }
-                            }
-
-
-                            if (!je_pouzity)
-                            {
-                                foreach(Postava milenka in budova.pracovnici)
-                                {
-                                    if(milenka != milenec)
-                                    {
-                                        bool je_pouzita = false;
-                                        foreach(Postava pouzita_postava in pouzity)
-                                        {
-                                            if (milenka == pouzita_postava)
-                                            {
-                                                je_pouzita = true;
-                                            }
-                                        }
-                                        if (!je_pouzita)
-                                        {
-                                            Postava novy = new Bezny_obyvatel { ID = Obyvatele.Count() };
-                                            if (rnd_s.Next(1, 3) == 1)
-                                            {
-                                                novy.muzstvi = true;
-                                            }
-                                            else
-                                            {
-                                                novy.muzstvi = false;
-                                            }
-                                            Obyvatele.Add(novy);
-                                            pouzity.Add(milenec);
-                                            pouzity.Add(milenka);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    budova.pracovnici = new List<Postava>();
+                    
 
                 }
                 
@@ -422,6 +399,7 @@ namespace WandsAndGunsEvolve
                 obyvatel.vek++;
             }
             prepocitej_postavy();
+            prepocitej_suroviny();
         }
 
         static public void prepocitej_postavy()
@@ -449,6 +427,13 @@ namespace WandsAndGunsEvolve
                 }
             }
             Obyvatel_count.Text = count_postav + " / " + Obyvatele.Count();
+        }
+
+        static public void prepocitej_suroviny()
+        {
+            Mornin_wood.Text = drevo.ToString();
+            Stone_Hard.Text = kamen.ToString();
+            
         }
         private void Postava_Click(object sender, RoutedEventArgs e)
         {

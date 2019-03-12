@@ -10,13 +10,17 @@
       Title="Vesnice">
 
     <Grid>
-        
+
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="60" Width="780" Margin="10,10,0,0">
             <StackPanel Background="LightGray" Orientation="Horizontal" >
                 <Button x:Name="postavy" Height="40" Width="40" Margin="7" Click="Postava_Click">
                     <Image x:Name="postavy_img" Height="40" Width="40" />
                 </Button>
                 <TextBlock x:Name="postavy_count" Text="0 / 0" HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
+                <Image x:Name="Drevo_img" Height="40" Width="40" Margin="5"/>
+                <TextBlock x:Name="Drevo_count" Text=" 0 " HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
+                <Image x:Name="Kamen_img" Height="40" Width="40" Margin="5"/>
+                <TextBlock x:Name="Kamen_count" Text=" 0 " HorizontalAlignment="Center" Height="20" FontWeight="Bold" FontSize="16"/>
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="3" Height="360" Width="60" Margin="10,80,0,0">
@@ -30,7 +34,7 @@
                 <Button x:Name="nastaveni" Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
                     <Image x:Name="nastaveni_img" Height="40" Width="40" />
                 </Button>
-                
+
             </StackPanel>
         </Border>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="360" Margin="80,80,0,0" VerticalAlignment="Top" Width="710">
@@ -192,14 +196,14 @@
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="4" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="5" />
                     <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="7" />
-                    <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="8" />                   
+                    <Rectangle Fill="Brown" Grid.Column="15" Grid.Row="8" />
                 </Grid>
             </Border>
         </Border>
-        <Button Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
-        <Button Margin="83,0,0,237" Height="100" Width="19" Background="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="3" />
-        <Button Margin="0,0,13,237" Height="100" Width="19" Background="SaddleBrown" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button x:Name="kamenolom" Margin="0,0,300,13" Height="16" Width="100" Background="Red" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button x:Name="drevorubec" Margin="83,0,0,237" Height="100" Width="19" Background="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="3" />
+        <Button x:Name="brana" Margin="0,0,18,237" Height="100" Width="19" Background="SaddleBrown" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="3" />
 
-        <Frame Height="350" Width="600" x:Name="Podokno" HorizontalAlignment="Center" VerticalAlignment="Center" ></Frame>
+        <Frame Height="350" Width="600" x:Name="Podokno" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
 </Page>

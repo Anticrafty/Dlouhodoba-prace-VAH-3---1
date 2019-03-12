@@ -66,71 +66,26 @@ namespace WandsAndGunsEvolve
 
         public void povoleny_budovy()
         {
-            Button Domov = new Button();
-            Domov.Name = "Domov";
-            Domov.Height = 50;
-            Domov.BorderThickness = new Thickness(5, 5, 5, 5);
-            Domov.Margin = new Thickness(5, 5, 5, 5);
-            Domov.Click += new RoutedEventHandler(Vyber_Click);
-
-            StackPanel vnitrek = new StackPanel();
-            vnitrek.Orientation = Orientation.Horizontal;
-
-            Image new_image = new Image();
-            BitmapImage b = new BitmapImage();
-            b.BeginInit();
-            b.UriSource = new Uri("img/domek.png", UriKind.Relative);
-            b.EndInit();
-
-            new_image.Source = b;
-            new_image.Height = 40;
-            new_image.Width = 40;
-
-            vnitrek.Children.Add(new_image);
-
-            TextBlock new_txt = new TextBlock();
-            new_txt.FontSize = 24;
-            new_txt.Text = "Domov";
-
-            vnitrek.Children.Add(new_txt);
-
-            Domov.Content = vnitrek;
-
-            Seznam.Children.Add(Domov);
+            bool je_dum = false;
+            foreach (List<Budova> radek in Vesnice.Budovy)
+            {
+                foreach(Budova budova in radek)
+                {
+                    if( budova is Domov && budova.Potreba_Na_Postaveni == budova.Splneno_Na_Postaveni)
+                    {
+                        je_dum = true;
+                    }
+                }
+            }
+            vytvor_butt("Domov", "domek.png", 50 , 20);
 
             //
-
-            Domov = new Button();
-            Domov.Name = "Dilna";
-            Domov.Height = 50;
-            Domov.BorderThickness = new Thickness(5, 5, 5, 5);
-            Domov.Margin = new Thickness(5, 5, 5, 5);
-            Domov.Click += new RoutedEventHandler(Vyber_Click);
-
-            vnitrek = new StackPanel();
-            vnitrek.Orientation = Orientation.Horizontal;
-
-            new_image = new Image();
-            b = new BitmapImage();
-            b.BeginInit();
-            b.UriSource = new Uri("img/Dilna.png", UriKind.Relative);
-            b.EndInit();
-
-            new_image.Source = b;
-            new_image.Height = 40;
-            new_image.Width = 40;
-
-            vnitrek.Children.Add(new_image);
-
-            new_txt = new TextBlock();
-            new_txt.FontSize = 24;
-            new_txt.Text = "Dilna";
-
-            vnitrek.Children.Add(new_txt);
-
-            Domov.Content = vnitrek;
-
-            Seznam.Children.Add(Domov);
+            if (je_dum)
+            {
+                vytvor_butt("Dilna","Dilna.png", 50 , 100 );
+               
+            }
+            
         }
 
         public void povoleny_postavy()
@@ -265,6 +220,53 @@ namespace WandsAndGunsEvolve
         private void Zpet_Click(object sender, RoutedEventArgs e)
         {
             Vesnice.Ukonci_podokno();
+        }
+
+        private void vytvor_butt(string name, string odkaz_img, int drevo, int kamen)
+        {
+            Button Domov = new Button();
+            Domov.Name = name;
+            Domov.Height = 50;
+            Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+            Domov.Margin = new Thickness(5, 5, 5, 5);
+            Domov.Click += new RoutedEventHandler(Vyber_Click);
+
+            StackPanel vnitrek = new StackPanel();
+            vnitrek.Orientation = Orientation.Horizontal;
+
+            Image new_image = new Image();
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("img/" + odkaz_img, UriKind.Relative);
+            b.EndInit();
+
+            new_image.Source = b;
+            new_image.Height = 40;
+            new_image.Width = 40;
+
+            vnitrek.Children.Add(new_image);
+
+            TextBlock new_txt = new TextBlock();
+            new_txt.FontSize = 24;
+            new_txt.Text = name;
+
+            vnitrek.Children.Add(new_txt);
+
+            new_txt = new TextBlock();
+            new_txt.FontSize = 12;
+            new_txt.Text = "drevo: " + drevo;
+
+            vnitrek.Children.Add(new_txt);
+
+            new_txt = new TextBlock();
+            new_txt.FontSize = 12;
+            new_txt.Text = "kamen: " + kamen;
+
+            vnitrek.Children.Add(new_txt);
+
+            Domov.Content = vnitrek;
+
+            Seznam.Children.Add(Domov);
         }
     }
 }

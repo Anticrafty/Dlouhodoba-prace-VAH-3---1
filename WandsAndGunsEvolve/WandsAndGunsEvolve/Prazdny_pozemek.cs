@@ -22,6 +22,11 @@ namespace WandsAndGunsEvolve
             throw new NotImplementedException();
         }
 
+        public override void Do()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Uceni()
         {
             throw new NotImplementedException();
