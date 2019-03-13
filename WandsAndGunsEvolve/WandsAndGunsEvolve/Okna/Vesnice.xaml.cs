@@ -412,10 +412,36 @@ namespace WandsAndGunsEvolve
                 kamen = kamen + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
             }
             Kamenolomec = new List<Postava>();
-            foreach (Postava obyvatel in Obyvatele)
+            foreach (Postava obyvatel in Obyvatele.AsEnumerable().Reverse())
             {
                 obyvatel.vek++;
-                jidlo--;
+                if(jidlo != 0)
+                {
+                    if (obyvatel.zivy)
+                    {
+                        jidlo--;
+                        if (obyvatel.actual_zivotu < obyvatel.Max_Zivotu)
+                        {
+                            obyvatel.actual_zivotu++;
+                        }
+                    }
+                }
+                else
+                {
+                   
+                    if(obyvatel.zivy)
+                    {
+                        obyvatel.actual_zivotu--;
+                        if (obyvatel.actual_zivotu == 0)
+                        {
+                            obyvatel.zivy = false;
+                        }
+                    }
+                }
+                if( obyvatel.vek > 50)
+                {
+                    obyvatel.zivy = false;
+                }
             }
             prepocitej_postavy();
             prepocitej_suroviny();
@@ -424,42 +450,51 @@ namespace WandsAndGunsEvolve
         static public void prepocitej_postavy()
         {
             int count_postav = 0;
+            int count_mrtvich = 0;
             foreach( Postava obyvatel in Obyvatele )
             {
-                bool nepracuje = true;
-                foreach ( List<Budova> radek in Budovy)
-                {
-                    foreach( Budova budova in radek)
+                if (obyvatel.zivy)
+                { 
+                    bool nepracuje = true;
+                    foreach ( List<Budova> radek in Budovy)
                     {
-                        foreach(Postava pracovnik in budova.pracovnici)
+                        foreach( Budova budova in radek)
                         {
-                            if(obyvatel == pracovnik)
+                            foreach(Postava pracovnik in budova.pracovnici)
                             {
-                                nepracuje = false;
+                                if(obyvatel == pracovnik)
+                                {
+                                    nepracuje = false;
+                                }
                             }
                         }
                     }
-                }
-                foreach( Postava delnik in Drevorub)
-                {
-                    if (obyvatel == delnik)
+                    foreach( Postava delnik in Drevorub)
                     {
-                        nepracuje = false;
+                        if (obyvatel == delnik)
+                        {
+                            nepracuje = false;
+                        }
+                    }
+                    foreach (Postava delnik in Kamenolomec)
+                    {
+                        if (obyvatel == delnik)
+                        {
+                            nepracuje = false;
+                        }
+                    }       
+                
+                    if (nepracuje)
+                    {
+                        count_postav++;
                     }
                 }
-                foreach (Postava delnik in Kamenolomec)
+                else
                 {
-                    if (obyvatel == delnik)
-                    {
-                        nepracuje = false;
-                    }
-                }
-                if (nepracuje)
-                {
-                    count_postav++;
+                    count_mrtvich++;
                 }
             }
-            Obyvatel_count.Text = count_postav + " / " + Obyvatele.Count();
+            Obyvatel_count.Text = count_postav + " / " + (Obyvatele.Count() - count_mrtvich);
         }
 
         static public void prepocitej_suroviny()

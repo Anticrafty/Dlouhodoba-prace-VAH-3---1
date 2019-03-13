@@ -115,8 +115,8 @@ namespace WandsAndGunsEvolve
                 bool alredy_in_somewhere = false;
                 foreach (List<Budova> radek in Vesnice.Budovy)
                 {
-                    foreach(Budova budova in radek)
-                    { 
+                    foreach (Budova budova in radek)
+                    {
                         foreach (Postava pracovnik in budova.pracovnici)
                         {
                             if (postava == pracovnik)
@@ -133,7 +133,7 @@ namespace WandsAndGunsEvolve
                         alredy_in_somewhere = true;
                     }
                 }
-                foreach(Postava delnik in Vesnice.Kamenolomec)
+                foreach (Postava delnik in Vesnice.Kamenolomec)
                 {
                     if (postava == delnik)
                     {
@@ -155,7 +155,7 @@ namespace WandsAndGunsEvolve
                 {
                     Postava.Click += new RoutedEventHandler(Vyber_Click);
                 }
-                if(What == "Obyvatel" && alredy_in_somewhere)
+                if (What == "Obyvatel" && alredy_in_somewhere)
                 {
                     Postava.BorderBrush = Brushes.DarkRed;
                 }
@@ -189,8 +189,11 @@ namespace WandsAndGunsEvolve
                 TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
                 vnitrek.Children.Add(Pohlavi);
 
+                TextBlock zivot = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " životy: " + postava.actual_zivotu + " / " + postava.Max_Zivotu };
+                vnitrek.Children.Add(zivot);
+
                 Postava.Content = vnitrek;
-                if (alredy_in_somewhere && (What == "Postava" || What == "Mnozeni"))
+                if ((alredy_in_somewhere && (What == "Postava" || What == "Mnozeni")) || !postava.zivy)
                 {
                     
                 }
