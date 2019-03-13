@@ -417,8 +417,13 @@ namespace WandsAndGunsEvolve
                 kamen = kamen + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
             }
             Kamenolomec = new List<Postava>();
+
+            // Loveni - Branana
+
+            int nahodna_potvora = rnd_s.Next(1, 13);
+            // 1-2 Pták, 3-5 Rabbit, 6-7 Jelen, 8 Medved, 9-10 Vlk, 11 - Drak, 12 - Jednorozec
             foreach (Postava delnik in Branana)
-            {
+            {                
                 jidlo = jidlo + rnd_s.Next(1, 5 * delnik.Postava_za_Den);
             }
             Branana = new List<Postava>();
