@@ -52,35 +52,7 @@ namespace WandsAndGunsEvolve
             int number_in_list = 0;
             foreach (Postava postava in Vesnice.Budovy[A][B].pracovnici)
             {
-                Border okoli = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(3, 3, 3, 3), Width = 230, Height = 30, Margin = new Thickness(2, 2, 2, 2) };
-                StackPanel obsah = new StackPanel() { Orientation = Orientation.Horizontal };
-                Image obr = new Image() { Margin = new Thickness(5, 0, 5, 0), Height = 20, Width = 20 };
-                BitmapImage bit = new BitmapImage();
-                bit.BeginInit();
-                bit.UriSource = new Uri("../img/" + postava.obr_odkaz, UriKind.Relative);
-                bit.EndInit();
-                obr.Source = bit;
-                obsah.Children.Add(obr);
-                TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
-                obsah.Children.Add(Vek);
-                string pohlav = "pohlaví";
-                if (postava.muzstvi)
-                {
-                    pohlav = "muž";
-                }
-                else
-                {
-                    pohlav = "žena";
-                }
-                TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
-                obsah.Children.Add(Pohlavi);
-                Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + number_in_list };
-                button.Click += new RoutedEventHandler(Odebrat_Click);
-                obsah.Children.Add(button);
-
-                okoli.Child = obsah;
-
-                pracovnici.Children.Add(okoli);
+                vypis_postavu(postava, number_in_list);
                 number_in_list++;
             }
 
@@ -119,90 +91,46 @@ namespace WandsAndGunsEvolve
                 int number_in_list = 0;
                 foreach (Postava postava in Vesnice.Drevorub)
                 {
-                    Border okoli = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(3, 3, 3, 3), Width = 230, Height = 30, Margin = new Thickness(2, 2, 2, 2) };
-                    StackPanel obsah = new StackPanel() { Orientation = Orientation.Horizontal };
-                    Image obr = new Image() { Margin = new Thickness(5, 0, 5, 0), Height = 20, Width = 20 };
-                    BitmapImage bit = new BitmapImage();
-                    bit.BeginInit();
-                    bit.UriSource = new Uri("../img/" + postava.obr_odkaz, UriKind.Relative);
-                    bit.EndInit();
-                    obr.Source = bit;
-                    obsah.Children.Add(obr);
-                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
-                    obsah.Children.Add(Vek);
-                    string pohlav = "pohlaví";
-                    if (postava.muzstvi)
-                    {
-                        pohlav = "muž";
-                    }
-                    else
-                    {
-                        pohlav = "žena";
-                    }
-                    TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
-                    obsah.Children.Add(Pohlavi);
-                    Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + number_in_list };
-                    button.Click += new RoutedEventHandler(Odebrat_Click);
-                    obsah.Children.Add(button);
-
-                    okoli.Child = obsah;
-
-                    pracovnici.Children.Add(okoli);
+                    vypis_postavu(postava, number_in_list);
                     number_in_list++;
                 }
+                Stavba.Content = "Těžba";
             }
-            else
+            else if (A == -2 || B == -2)
             {
                 int number_in_list = 0;
                 foreach (Postava postava in Vesnice.Kamenolomec)
                 {
-                    Border okoli = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(3, 3, 3, 3), Width = 230, Height = 30, Margin = new Thickness(2, 2, 2, 2) };
-                    StackPanel obsah = new StackPanel() { Orientation = Orientation.Horizontal };
-                    Image obr = new Image() { Margin = new Thickness(5, 0, 5, 0), Height = 20, Width = 20 };
-                    BitmapImage bit = new BitmapImage();
-                    bit.BeginInit();
-                    bit.UriSource = new Uri("../img/" + postava.obr_odkaz, UriKind.Relative);
-                    bit.EndInit();
-                    obr.Source = bit;
-                    obsah.Children.Add(obr);
-                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
-                    obsah.Children.Add(Vek);
-                    string pohlav = "pohlaví";
-                    if (postava.muzstvi)
-                    {
-                        pohlav = "muž";
-                    }
-                    else
-                    {
-                        pohlav = "žena";
-                    }
-                    TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
-                    obsah.Children.Add(Pohlavi);
-                    Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + number_in_list };
-                    button.Click += new RoutedEventHandler(Odebrat_Click);
-                    obsah.Children.Add(button);
-
-                    okoli.Child = obsah;
-
-                    pracovnici.Children.Add(okoli);
+                    vypis_postavu(postava, number_in_list);
                     number_in_list++;
                 }
+                Stavba.Content = "Těžba";
             }
+            else if (A == -3 || B == -3)
+            {
+                int number_in_list = 0;
+                foreach (Postava postava in Vesnice.Branana)
+                {
+                    vypis_postavu(postava, number_in_list);
+                    number_in_list++;
+                }
 
+                Stavba.Content = "Přidat jednotku";
+            }
             Vyvoj.Visibility = Visibility.Collapsed;
             Uceni.Visibility = Visibility.Collapsed;
             Craft.Visibility = Visibility.Collapsed;
-            Stavba.Content = "Těžba";
         }
+            
 
-            private void Stavba_Click(object sender, RoutedEventArgs e)
+        private void Stavba_Click(object sender, RoutedEventArgs e)
         {
             //Vesnice.Budovy[A][B].Splneno_Na_Postaveni++;
             if (A > -1 || B > -1)
             {
                 Vesnice.Budovy[A][B].nastavena_akce = "Stavba";
             }
-            VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno,A,B,"Postava"));
+            VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, A, B, "Postava"));
         }
 
         public void Mnozeni_Click(object sender, RoutedEventArgs e)
@@ -223,18 +151,61 @@ namespace WandsAndGunsEvolve
             if (A == -1 || B == -1)
             {
                 Vesnice.Drevorub.RemoveAt(id);
+                pracovnici.Children.Clear();
+                delnici_zapis();
             }
             else if (A == -2 || B == -2)
             {
                 Vesnice.Kamenolomec.RemoveAt(id);
+                pracovnici.Children.Clear();
+                delnici_zapis();
+            }
+            else if (A == -3 || B == -3)
+            {
+                Vesnice.Branana.RemoveAt(id);
+                pracovnici.Children.Clear();
+                delnici_zapis();
             }
             else
             {
-
                 Vesnice.Budovy[A][B].pracovnici.RemoveAt(id);
+                pracovnici.Children.Clear();
+                pracovnici_zapis();
             }
-            pracovnici.Children.Clear();
-            pracovnici_zapis();
+            
+        }
+
+        public void vypis_postavu(Postava postava, int number_in_list)
+        {
+            Border okoli = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(3, 3, 3, 3), Width = 230, Height = 30, Margin = new Thickness(2, 2, 2, 2) };
+            StackPanel obsah = new StackPanel() { Orientation = Orientation.Horizontal };
+            Image obr = new Image() { Margin = new Thickness(5, 0, 5, 0), Height = 20, Width = 20 };
+            BitmapImage bit = new BitmapImage();
+            bit.BeginInit();
+            bit.UriSource = new Uri("../img/" + postava.obr_odkaz, UriKind.Relative);
+            bit.EndInit();
+            obr.Source = bit;
+            obsah.Children.Add(obr);
+            TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Věk: " + postava.vek };
+            obsah.Children.Add(Vek);
+            string pohlav = "pohlaví";
+            if (postava.muzstvi)
+            {
+                pohlav = "muž";
+            }
+            else
+            {
+                pohlav = "žena";
+            }
+            TextBlock Pohlavi = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " Pohlaví: " + pohlav };
+            obsah.Children.Add(Pohlavi);
+            Button button = new Button() { Margin = new Thickness(5, 0, 5, 0), Content = "X", Height = 20, FontWeight = FontWeights.Bold, Width = 20, Foreground = Brushes.Red, Name = "ID" + number_in_list };
+            button.Click += new RoutedEventHandler(Odebrat_Click);
+            obsah.Children.Add(button);
+
+            okoli.Child = obsah;
+
+            pracovnici.Children.Add(okoli);
         }
     }
 }

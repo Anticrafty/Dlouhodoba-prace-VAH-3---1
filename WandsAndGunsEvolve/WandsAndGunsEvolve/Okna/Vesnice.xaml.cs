@@ -30,6 +30,7 @@ namespace WandsAndGunsEvolve
 
         static public List<Postava> Drevorub = new List<Postava>();
         static public List<Postava> Kamenolomec = new List<Postava>();
+        static public List<Postava> Branana= new List<Postava>();
 
         public static List<List<Budova>> Budovy = new List<List<Budova>>();
         public static List<Postava> Obyvatele = new List<Postava>();
@@ -351,6 +352,10 @@ namespace WandsAndGunsEvolve
             {
                 Dalsi_kolo();
             }
+            else if(ceho == "konec")
+            {
+                System.Windows.Application.Current.Shutdown();
+            }
         }
 
         public void Vytvor_Lidi_Prvni()
@@ -412,6 +417,11 @@ namespace WandsAndGunsEvolve
                 kamen = kamen + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
             }
             Kamenolomec = new List<Postava>();
+            foreach (Postava delnik in Branana)
+            {
+                jidlo = jidlo + rnd_s.Next(1, 5 * delnik.Postava_za_Den);
+            }
+            Branana = new List<Postava>();
             foreach (Postava obyvatel in Obyvatele.AsEnumerable().Reverse())
             {
                 obyvatel.vek++;
@@ -451,25 +461,25 @@ namespace WandsAndGunsEvolve
         {
             int count_postav = 0;
             int count_mrtvich = 0;
-            foreach( Postava obyvatel in Obyvatele )
+            foreach (Postava obyvatel in Obyvatele)
             {
                 if (obyvatel.zivy)
-                { 
+                {
                     bool nepracuje = true;
-                    foreach ( List<Budova> radek in Budovy)
+                    foreach (List<Budova> radek in Budovy)
                     {
-                        foreach( Budova budova in radek)
+                        foreach (Budova budova in radek)
                         {
-                            foreach(Postava pracovnik in budova.pracovnici)
+                            foreach (Postava pracovnik in budova.pracovnici)
                             {
-                                if(obyvatel == pracovnik)
+                                if (obyvatel == pracovnik)
                                 {
                                     nepracuje = false;
                                 }
                             }
                         }
                     }
-                    foreach( Postava delnik in Drevorub)
+                    foreach (Postava delnik in Drevorub)
                     {
                         if (obyvatel == delnik)
                         {
@@ -482,8 +492,14 @@ namespace WandsAndGunsEvolve
                         {
                             nepracuje = false;
                         }
-                    }       
-                
+                    }
+                    foreach (Postava delnik in Branana)
+                    {
+                        if (obyvatel == delnik)
+                        {
+                            nepracuje = false;
+                        }
+                    }
                     if (nepracuje)
                     {
                         count_postav++;
@@ -495,6 +511,10 @@ namespace WandsAndGunsEvolve
                 }
             }
             Obyvatel_count.Text = count_postav + " / " + (Obyvatele.Count() - count_mrtvich);
+            if (Obyvatele.Count() == count_mrtvich)
+            {
+                podokno.Navigate(new potvrzeni(podokno, 0, 0, "konec"));
+            }
         }
 
         static public void prepocitej_suroviny()
@@ -515,9 +535,13 @@ namespace WandsAndGunsEvolve
             {
                 Podokno.Navigate(new Menu_budovy(Podokno, -1, -1));
             }
-            else
+            else if (butt.Name == "kamenolom")
             {
                 Podokno.Navigate(new Menu_budovy(Podokno, -2, -2));
+            }
+            else
+            {
+                Podokno.Navigate(new Menu_budovy(Podokno, -3, -3));
             }
         }
     }    

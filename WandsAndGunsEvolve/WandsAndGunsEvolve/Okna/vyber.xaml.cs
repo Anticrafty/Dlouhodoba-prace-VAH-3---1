@@ -25,8 +25,6 @@ namespace WandsAndGunsEvolve
         int Y;
         string What;
 
-        int urceni_obyvatele = 0;
-
         public vyber()
         {
             InitializeComponent();
@@ -140,7 +138,13 @@ namespace WandsAndGunsEvolve
                         alredy_in_somewhere = true;
                     }
                 }
-
+                foreach (Postava delnik in Vesnice.Branana)
+                {
+                    if (postava == delnik)
+                    {
+                        alredy_in_somewhere = true;
+                    }
+                }
 
                 Button Postava = new Button();
                 Postava.Name = "ID" + postava.ID;
@@ -231,31 +235,29 @@ namespace WandsAndGunsEvolve
                 {
                     Vesnice.Kamenolomec.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
                 }
+                else if (X == -3 || Y == -3)
+                {
+                    Vesnice.Branana.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
+                }
                 else
                 {
                     Vesnice.Budovy[X][Y].pracovnici.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
                 }
-                urceni_obyvatele++;
-                if (What == "Postava" || (What == "Mnozeni" && urceni_obyvatele == 2))
-                    Vesnice.Ukonci_podokno();
-                else
+                int ID_obj = 0;
+                foreach(Object obj in Seznam.Children)
                 {
-                    int ID_obj = 0;
-                    foreach(Object obj in Seznam.Children)
+                    if (obj is Button)
                     {
-                        if (obj is Button)
+                        butt = obj as Button;
+                        if (butt.Content.ToString() != "Zpět")
                         {
-                            butt = obj as Button;
-                            if (butt.Content.ToString() != "Zpět")
-                            {
-                                Seznam.Children[ID_obj].Visibility = Visibility.Collapsed;
-                            }
-                                
+                            Seznam.Children[ID_obj].Visibility = Visibility.Collapsed;
                         }
-                        ID_obj++;
+                                
                     }
-                    povoleny_postavy();
+                    ID_obj++;
                 }
+                    povoleny_postavy();
             }
         }
 

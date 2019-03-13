@@ -49,6 +49,12 @@ namespace WandsAndGunsEvolve
             {
                 Nadpis.Text = "Chcete nové kolo?";
             }
+            else if (co == "konec")
+            {
+                Nadpis.Text = "Cela vesnice vymřela.";
+                Ne.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
