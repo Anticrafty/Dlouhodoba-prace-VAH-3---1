@@ -356,6 +356,14 @@ namespace WandsAndGunsEvolve
             {
                 System.Windows.Application.Current.Shutdown();
             }
+            else if(ceho == "Speedy")
+            {
+                podokno.Navigate(new Lovecky_okno(podokno, true));
+            }
+            else if (ceho == "Normal Speed")
+            {
+                podokno.Navigate(new Lovecky_okno(podokno, false));
+            }
         }
 
         public void Vytvor_Lidi_Prvni()
@@ -420,13 +428,7 @@ namespace WandsAndGunsEvolve
 
             // Loveni - Branana
 
-            int nahodna_potvora = rnd_s.Next(1, 13);
-            // 1-2 Pták, 3-5 Rabbit, 6-7 Jelen, 8 Medved, 9-10 Vlk, 11 - Drak, 12 - Jednorozec
-            foreach (Postava delnik in Branana)
-            {                
-                jidlo = jidlo + rnd_s.Next(1, 5 * delnik.Postava_za_Den);
-            }
-            Branana = new List<Postava>();
+            podokno.Navigate(new potvrzeni(podokno, 0, 0, "Speedy"));
             foreach (Postava obyvatel in Obyvatele.AsEnumerable().Reverse())
             {
                 obyvatel.vek++;

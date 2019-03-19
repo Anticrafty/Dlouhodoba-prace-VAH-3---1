@@ -1,0 +1,26 @@
+﻿<Page x:Class="WandsAndGunsEvolve.Lovecky_okno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WandsAndGunsEvolve"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Background="LightGray"
+      Title="Lovecky_okno">
+
+    <Grid>
+        <Button Content="Zpět" HorizontalAlignment="Left" Margin="20,400,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
+        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="400">
+            
+            <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="420"  VerticalAlignment="Top" Width="250" Margin="130,10,0,0">
+                <ScrollViewer >
+                    <StackPanel x:Name="akce_loveni" Background="White">
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Border>
+    </Grid>
+</Page>

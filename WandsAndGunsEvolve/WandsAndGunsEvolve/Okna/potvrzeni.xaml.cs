@@ -54,6 +54,10 @@ namespace WandsAndGunsEvolve
                 Nadpis.Text = "Cela vesnice vymřela.";
                 Ne.Visibility = Visibility.Collapsed;
             }
+            else if ( co == "Speedy")
+            {
+                Nadpis.Text = "Chceš rychlou verzy lovu/boje? Upozornění! Jednotky nebudou moct ustoupit pro svoji záchranu!";
+            }
 
         }
 
@@ -63,14 +67,19 @@ namespace WandsAndGunsEvolve
             string content = butt.Content.ToString();
             if (content == "Ano")
             {
-                
-                    Vesnice.Potvrzeni(A,B,Co);
-                    Vesnice.Ukonci_podokno();
+
+                Vesnice.Ukonci_podokno();
+                Vesnice.Potvrzeni(A,B,Co);
 
             }
             else
             {
+
                 Vesnice.Ukonci_podokno();
+                if (Co == "Speedy")
+                {
+                    Vesnice.Potvrzeni(A, B, "Normal Speed");
+                }
             }
         }
     }
