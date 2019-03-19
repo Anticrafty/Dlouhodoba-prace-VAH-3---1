@@ -11,6 +11,7 @@
 
     <Grid>
         <Button Content="Zpět" HorizontalAlignment="Left" Margin="20,400,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Zpet_Click"/>
+        <Button x:Name="Ustup"  Content="Ústup" HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Ustup_Click"/>
         <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="400">
             
             <Border  BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="420"  VerticalAlignment="Top" Width="250" Margin="130,10,0,0">

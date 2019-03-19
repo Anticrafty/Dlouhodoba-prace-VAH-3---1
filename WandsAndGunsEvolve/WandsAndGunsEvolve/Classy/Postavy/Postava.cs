@@ -14,6 +14,7 @@ namespace WandsAndGunsEvolve
         public int actual_zivotu = 5;
         public int Utok = 1;
         public int Vzdalenost_Utoku = 1;
+        public int Rychlost = 2;
         public int Obrana = 0;
         public int Postava_za_Den = 1;
         public int vek = 0;

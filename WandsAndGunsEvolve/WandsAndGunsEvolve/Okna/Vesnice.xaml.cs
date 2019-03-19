@@ -403,7 +403,7 @@ namespace WandsAndGunsEvolve
                             if (obj is Button)
                             {
                                 Button butt = obj as Button;
-                                if (butt.Name == "Budova" + budova.Y_sloupec + budova.X_radek )
+                                if (butt.Name == "Budova" + budova.Y_sloupec + budova.X_radek)
                                 {
                                     butt.Background = Brushes.White;
                                 }
@@ -413,9 +413,9 @@ namespace WandsAndGunsEvolve
                     budova.pracovnici = new List<Postava>();
 
                 }
-                
+
             }
-            foreach(Postava delnik in Drevorub)
+            foreach (Postava delnik in Drevorub)
             {
                 drevo = drevo + rnd_s.Next(5, 20 * delnik.Postava_za_Den);
             }
@@ -427,8 +427,12 @@ namespace WandsAndGunsEvolve
             Kamenolomec = new List<Postava>();
 
             // Loveni - Branana
-
-            podokno.Navigate(new potvrzeni(podokno, 0, 0, "Speedy"));
+            //podokno.Navigate(new potvrzeni(podokno, 0, 0, "Speedy"));
+            if (Branana.Count() != 0)
+            {
+                podokno.Navigate(new Lovecky_okno(podokno, false));
+            }
+            
             foreach (Postava obyvatel in Obyvatele.AsEnumerable().Reverse())
             {
                 obyvatel.vek++;

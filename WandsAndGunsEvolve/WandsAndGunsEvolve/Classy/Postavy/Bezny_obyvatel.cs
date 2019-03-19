@@ -14,6 +14,7 @@ namespace WandsAndGunsEvolve
             Max_Zivotu = 5;
             Utok = 1;
             Vzdalenost_Utoku = 1;
+            Rychlost = 2;
             Obrana = 0;
             Postava_za_Den = 1;
     }

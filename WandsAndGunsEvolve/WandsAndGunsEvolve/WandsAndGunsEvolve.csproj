@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Classy\Postavy\Bezny_obyvatel.cs" />
     <Compile Include="Classy\Budovy\Budova.cs" />
-    <Compile Include="Lovecky_okno.xaml.cs">
+    <Compile Include="Okna\Lovecky_okno.xaml.cs">
       <DependentUpon>Lovecky_okno.xaml</DependentUpon>
     </Compile>
     <Compile Include="Okna\DialogovyFrame.xaml.cs">
@@ -83,7 +83,7 @@
     <Compile Include="Okna\vyber.xaml.cs">
       <DependentUpon>vyber.xaml</DependentUpon>
     </Compile>
-    <Page Include="Lovecky_okno.xaml">
+    <Page Include="Okna\Lovecky_okno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
