@@ -37,6 +37,7 @@ namespace WandsAndGunsEvolve
         static public int drevo = 50;
         static public int kamen = 20;
         static public int jidlo = 14;
+        static public List<string> items = new List<string>();
 
         public bool staveni_bool = false;
         static public Random rnd_s = new Random();

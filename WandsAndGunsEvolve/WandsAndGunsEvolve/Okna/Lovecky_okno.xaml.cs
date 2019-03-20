@@ -50,6 +50,10 @@ namespace WandsAndGunsEvolve
             {
                 postupny_boj();
             }
+            if (Vesnice.Branana[ID_aktualniho_lovce].actual_zivotu == 0)
+            {
+                Vesnice.Branana[ID_aktualniho_lovce].actual_zivotu++;
+            }
         }
 
         private void postupny_boj()
@@ -117,6 +121,13 @@ namespace WandsAndGunsEvolve
             {
                 TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Lovec " + (ID_aktualniho_lovce + 1) + " nic nenašel." };
                 akce_loveni.Children.Add(Vek);
+                int bobule = Vesnice.rnd_s.Next(0, 3);
+                if (bobule != 0)
+                {
+                    Vesnice.jidlo = Vesnice.jidlo + bobule;
+                    Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Lovec  " + (ID_aktualniho_lovce + 1) + "  alespoň přinesl " + bobule + "bobulí." };
+                    akce_loveni.Children.Add(Vek);
+                }
                 dalsi_lovec();
 
             }
@@ -176,6 +187,10 @@ namespace WandsAndGunsEvolve
             if (Vesnice.Branana.Count() - 1 != ID_aktualniho_lovce)
             {
                 ID_aktualniho_lovce++;
+                if(Vesnice.Branana[ID_aktualniho_lovce].actual_zivotu < 1)
+                {
+                    Vesnice.Branana[ID_aktualniho_lovce].actual_zivotu++;
+                }
             }
             else
             {
@@ -224,8 +239,15 @@ namespace WandsAndGunsEvolve
                 if (sance_lovenyho > sance_lovce )
                 {
                     aktualni_loveny = null;
-                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Lovec  " + (ID_aktualniho_lovce + 1) + "  Stratil svou kořist" };
+                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Lovec  " + (ID_aktualniho_lovce + 1) + "  Ztratil svou kořist" };                   
                     akce_loveni.Children.Add(Vek);
+                    int bobule = Vesnice.rnd_s.Next(0, 3);
+                    if(bobule != 0)
+                    {
+                        Vesnice.jidlo = Vesnice.jidlo + bobule;
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = "Lovec  " + (ID_aktualniho_lovce + 1) + "  alespoň přinesl " + bobule + "bobulí."};
+                        akce_loveni.Children.Add(Vek);
+                    }
                     dalsi_lovec();
                 }          
                 else
@@ -270,38 +292,70 @@ namespace WandsAndGunsEvolve
                 if (health_lovenyho < 1)
                 {
                     TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = aktualni_loveny + " Zemřel" };
-                    
+                    akce_loveni.Children.Add(Vek);
+
                     int ziskany_jidlo = 0;
                     if (aktualni_loveny == "Ptak")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(1, 3);
+                        Vesnice.items.Add("Pirko");
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno pírko" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Zajic")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(1, 4);
+                        Vesnice.items.Add("Kuze");
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno 1 kuze" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Jelen")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(3, 7);
+                        for (int x = 0; x > 4; x++)
+                        {
+                            Vesnice.items.Add("Kuze");
+                        }
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno 3 kůže" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Medved")
                     {
+                        
                         ziskany_jidlo = Vesnice.rnd_s.Next(5, 11);
+                        for (int x = 0; x > 7; x++)
+                        {
+                            Vesnice.items.Add("Kuze");
+                        }
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj 6 kůže" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Vlk")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(2, 5);
+                        for (int x = 0; x > 3; x++)
+                        {
+                            Vesnice.items.Add("Kuze");
+                        }
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno 2 kůže" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Drak")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(10, 31);
+                        Vesnice.items.Add("DraciSupina");
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno Dračí šupina" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     else if (aktualni_loveny == "Jednorozec")
                     {
                         ziskany_jidlo = Vesnice.rnd_s.Next(5, 21);
+                        Vesnice.items.Add("Jednorozci_zine");
+                        Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " bylo z něj získáno jednorožčí žíně" };
+                        akce_loveni.Children.Add(Vek);
                     }
                     Vesnice.jidlo = Vesnice.jidlo + ziskany_jidlo;
-                    Vek.Text = Vek.Text + " a bylo z něj získáno " + ziskany_jidlo + " jídla";
+                    Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = " a " + ziskany_jidlo + " jídla" };
                     akce_loveni.Children.Add(Vek);
                     aktualni_loveny = null;
                     dalsi_lovec();
@@ -369,7 +423,7 @@ namespace WandsAndGunsEvolve
                 }
                 else
                 {
-                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = aktualni_loveny + " nerefil lovce " + (ID_aktualniho_lovce + 1) };
+                    TextBlock Vek = new TextBlock() { Margin = new Thickness(5, 0, 5, 0), Text = aktualni_loveny + " netrefil lovce " + (ID_aktualniho_lovce + 1) };
                     akce_loveni.Children.Add(Vek);
                 }
             }
