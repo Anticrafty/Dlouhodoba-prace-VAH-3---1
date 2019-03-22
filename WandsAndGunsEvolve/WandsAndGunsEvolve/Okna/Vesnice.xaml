@@ -33,6 +33,9 @@
                 <Button x:Name="staveni" Height="40" Width="40" Margin="7" Click="Staveni_Click">
                     <Image x:Name="staveni_img" Height="40" Width="40" />
                 </Button>
+                <Button x:Name="inventar" Height="40" Width="40" Margin="7" Click="Inventar_click">
+                    <Image x:Name="invertar_img" Height="40" Width="40" />
+                </Button>
                 <Button x:Name="nastaveni" Height="40" Width="40" Margin="7" Click="Nastaveni_Click">
                     <Image x:Name="nastaveni_img" Height="40" Width="40" />
                 </Button>

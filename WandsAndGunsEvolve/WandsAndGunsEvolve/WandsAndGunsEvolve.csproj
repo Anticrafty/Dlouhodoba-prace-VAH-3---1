@@ -57,6 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="Classy\Postavy\Bezny_obyvatel.cs" />
     <Compile Include="Classy\Budovy\Budova.cs" />
+    <Compile Include="Okna\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Okna\Lovecky_okno.xaml.cs">
       <DependentUpon>Lovecky_okno.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
     <Compile Include="Okna\vyber.xaml.cs">
       <DependentUpon>vyber.xaml</DependentUpon>
     </Compile>
+    <Page Include="Okna\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Okna\Lovecky_okno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +190,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\sutr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Bagl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Pirko.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Kuze.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

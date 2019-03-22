@@ -105,6 +105,13 @@ namespace WandsAndGunsEvolve
 
             Kamen_img.Source = b;
 
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("../img/Bagl.png", UriKind.Relative);
+            b.EndInit();
+
+            invertar_img.Source = b;
+
             Vytvor_Lidi_Prvni();
 
             prepocitej_postavy();
@@ -555,6 +562,10 @@ namespace WandsAndGunsEvolve
             {
                 Podokno.Navigate(new Menu_budovy(Podokno, -3, -3));
             }
+        }
+        private void Inventar_click(object sender, RoutedEventArgs e)
+        {
+            Podokno.Navigate(new Inventory(Podokno));
         }
     }    
 }
