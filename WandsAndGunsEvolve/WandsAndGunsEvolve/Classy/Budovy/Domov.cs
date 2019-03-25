@@ -24,7 +24,7 @@ namespace WandsAndGunsEvolve
 
         public override void Do()
         {
-            if (nastavena_akce == "Mnozeni")
+            if (akce_budovy == "Mnozeni")
             {
                 List<Postava> pouzity = new List<Postava>();
                 Postava hleda = new Postava();
@@ -80,6 +80,7 @@ namespace WandsAndGunsEvolve
                 }
             }
             pracovnici = new List<Postava>();
+            akce_budovy = null;
         }
 
         public override void Uceni()

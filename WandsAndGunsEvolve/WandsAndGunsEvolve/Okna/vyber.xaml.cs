@@ -48,6 +48,10 @@ namespace WandsAndGunsEvolve
                 povoleny_budovy();
                 Vyber_jmeno.Text = "Vyber Budovu";
             }
+            else if (what == "Vyvoj" || what == "Uceni" || what == "Craft")
+            {
+                povoleny_itemy();
+            }
             else
             {
                 povoleny_postavy();
@@ -163,7 +167,16 @@ namespace WandsAndGunsEvolve
                 {
                     Postava.BorderBrush = Brushes.DarkRed;
                 }
-
+                if(What == "Postava" && Vesnice.Budovy[X][Y].craft_ceho != null)
+                {
+                    if(Vesnice.Budovy[X][Y].craft_ceho == "provazek")
+                    {
+                        if(!dostatek_itemu("kuze",1))
+                        {
+                            Postava.IsEnabled = false;
+                        }
+                    }
+                }
                 StackPanel vnitrek = new StackPanel();
                 vnitrek.Orientation = Orientation.Horizontal;
 
@@ -240,7 +253,7 @@ namespace WandsAndGunsEvolve
                     Vesnice.Branana.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
                 }
                 else
-                {
+                {                  
                     Vesnice.Budovy[X][Y].pracovnici.Add(Vesnice.Obyvatele[int.Parse(butt.Name.Substring(2))]);
                 }
                 int ID_obj = 0;
@@ -259,6 +272,12 @@ namespace WandsAndGunsEvolve
                 }
                     povoleny_postavy();
             }
+            else if (What == "Vyvoj" || What == "Uceni" || What == "Craft")
+            {
+                Vesnice.Budovy[X][Y].craft_ceho = butt.Name;
+                Vesnice.Budovy[X][Y].akce_budovy = What;
+                VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, X, Y, "Postava"));
+            }
         }
 
         private void Rodiny_strom_Click(object sender, RoutedEventArgs e)
@@ -268,6 +287,14 @@ namespace WandsAndGunsEvolve
 
         private void Zpet_Click(object sender, RoutedEventArgs e)
         {
+            if ( X > 0 && Y > 0)
+            { 
+                if (Vesnice.Budovy[X][Y].pracovnici.Count() == 0)
+                {
+                    Vesnice.Budovy[X][Y].akce_budovy = null;
+                    Vesnice.Budovy[X][Y].craft_ceho = null;
+                }
+            }
             Vesnice.Ukonci_podokno();
         }
 
@@ -334,6 +361,169 @@ namespace WandsAndGunsEvolve
             Domov.Content = vnitrek;
 
             Seznam.Children.Add(Domov);
+        }
+        public void povoleny_itemy()
+        {
+            if (What == "Vyvoj")
+            {
+                Vyber_jmeno.Text = "Vyber co Chcete vyvinout.";
+                if(Vesnice.Budovy[X][Y] is Dilna)
+                {
+                    bool is_made = false;
+                    foreach(string vynalez in Vesnice.vynalezy)
+                    {
+                        if (vynalez == "kladivo")
+                        {
+                            is_made = true;
+                        }
+                        
+                    }
+                    if (!is_made)
+                    {
+                        Button Domov = new Button();
+                        Domov.Name = "kladivo";
+                        Domov.Height = 50;
+                        Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+                        Domov.Margin = new Thickness(5, 5, 5, 5);
+                        Domov.Click += new RoutedEventHandler(Vyber_Click);
+                        bool je_provazek = dostatek_itemu("provazek", 1);
+                        if (Vesnice.kamen < 1 || !je_provazek )
+                        {
+                            Domov.IsEnabled = false;
+                        }
+
+                        StackPanel vnitrek = new StackPanel();
+                        vnitrek.Orientation = Orientation.Horizontal;
+                        
+                        Image new_image = new Image();
+                        BitmapImage b = new BitmapImage();
+                        b.BeginInit();
+                        b.UriSource = new Uri("../img/hammer.png", UriKind.Relative);
+                        b.EndInit();
+
+                        new_image.Source = b;
+                        new_image.Height = 40;
+                        new_image.Width = 40;
+
+                        vnitrek.Children.Add(new_image);
+                        TextBlock new_txt = new TextBlock();
+                        new_txt.FontSize = 24;
+                        new_txt.Text = "Kladivo";
+
+                        vnitrek.Children.Add(new_txt);
+
+
+                        new_txt = new TextBlock();
+                        new_txt.FontSize = 12;
+                        new_txt.Text = "kamen: 1";
+                        new_txt.Height = 20;
+                        new_txt.Margin = new Thickness(10, 0, 0, 0);
+                        new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+                        if (Vesnice.kamen < 1)
+                        {
+                            new_txt.Foreground = Brushes.Red;
+                        }
+
+                        vnitrek.Children.Add(new_txt);
+
+                        new_txt = new TextBlock();
+                        new_txt.FontSize = 12;
+                        new_txt.Text = "provazek: 1";
+                        new_txt.Height = 20;
+                        new_txt.Margin = new Thickness(10, 0, 0, 0);
+                        new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+                        if (!je_provazek)
+                        {
+                            new_txt.Foreground = Brushes.Red;
+                        }
+
+                        vnitrek.Children.Add(new_txt);
+
+                        Domov.Content = vnitrek;
+
+                        Seznam.Children.Add(Domov);
+                    }
+                }
+            }
+            if ( What == "Craft")
+            {
+                Vyber_jmeno.Text = "Vyber co Chcete vytvořit.";
+                if (Vesnice.Budovy[X][Y] is Dilna)
+                {
+                    Button Domov = new Button();
+                    Domov.Name = "provazek";
+                    Domov.Height = 50;
+                    Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+                    Domov.Margin = new Thickness(5, 5, 5, 5);
+                    Domov.Click += new RoutedEventHandler(Vyber_Click);
+                    bool je_kuze = dostatek_itemu("Kuze", 1);
+                    if ( !je_kuze)
+                    {
+                        Domov.IsEnabled = false;
+                    }
+
+                    StackPanel vnitrek = new StackPanel();
+                    vnitrek.Orientation = Orientation.Horizontal;
+
+                    Image new_image = new Image();
+                    BitmapImage b = new BitmapImage();
+                    b.BeginInit();
+                    b.UriSource = new Uri("../img/provazek.png", UriKind.Relative);
+                    b.EndInit();
+
+                    new_image.Source = b;
+                    new_image.Height = 40;
+                    new_image.Width = 40;
+
+                    vnitrek.Children.Add(new_image);
+
+                    TextBlock new_txt = new TextBlock();
+                    new_txt.FontSize = 24;
+                    new_txt.Text = "Provázek";
+
+                    vnitrek.Children.Add(new_txt);
+
+
+                    new_txt = new TextBlock();
+                    new_txt.FontSize = 12;
+                    new_txt.Text = "kůže: 1";
+                    new_txt.Height = 20;
+                    new_txt.Margin = new Thickness(10, 0, 0, 0);
+                    new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+                    if (!je_kuze)
+                    {
+                        new_txt.Foreground = Brushes.Red;
+                    }
+
+                    vnitrek.Children.Add(new_txt);
+
+                    Domov.Content = vnitrek;
+
+                    Seznam.Children.Add(Domov);
+                }
+
+             }
+        }
+        public bool dostatek_itemu(string jaky, int kolik)
+        {
+            // mby funkce na kontrolu itemu
+            int pocet_itemu = 0;
+            bool je_item = false;
+            foreach (string item in Vesnice.items)
+            {
+                if (item == jaky)
+                {
+                    pocet_itemu++;
+                }
+            }
+            if(pocet_itemu >= kolik)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

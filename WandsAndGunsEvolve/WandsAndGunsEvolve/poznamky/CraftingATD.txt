@@ -1,0 +1,16 @@
+﻿funkce budov.
+
+nastavit co bude dělat za úkon
+zamknout ostatní tlačítka
+nastavit co bude dělat za předmět
+vybrat kdo bude dělat
+odebrat předměty
+přidat do budovy
+
+udělat
+za počet postav
+
+odebrat
+při odebrání, zkontrolovat cp za úkon se děje
+podle toho co se tvoří, se přidájí itemy 
+pokud poslední postava, tak smazat úkon

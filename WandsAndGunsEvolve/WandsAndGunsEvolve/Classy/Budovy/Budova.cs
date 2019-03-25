@@ -18,7 +18,7 @@ namespace WandsAndGunsEvolve
         public int potreba_kamene;
 
         public List<Postava> pracovnici = new List<Postava>();
-        public string nastavena_akce;
+        public string craft_ceho;
 
         public bool Vyvoj_exist = false;
         public bool Uceni_exist = false;

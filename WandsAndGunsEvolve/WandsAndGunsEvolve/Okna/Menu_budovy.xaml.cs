@@ -56,6 +56,8 @@ namespace WandsAndGunsEvolve
                 number_in_list++;
             }
 
+            Stavba_potrba.Text = Vesnice.Budovy[A][B].Splneno_Na_Postaveni.ToString() + " / " + Vesnice.Budovy[A][B].Potreba_Na_Postaveni.ToString();
+
             if (Vesnice.Budovy[A][B].Splneno_Na_Postaveni < Vesnice.Budovy[A][B].Potreba_Na_Postaveni)
             {
                 Vyvoj.IsEnabled = false;
@@ -128,19 +130,27 @@ namespace WandsAndGunsEvolve
             //Vesnice.Budovy[A][B].Splneno_Na_Postaveni++;
             if (A > -1 || B > -1)
             {
-                Vesnice.Budovy[A][B].nastavena_akce = "Stavba";
+                Vesnice.Budovy[A][B].akce_budovy = "Stavba";
             }
             VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, A, B, "Postava"));
         }
 
         public void Mnozeni_Click(object sender, RoutedEventArgs e)
         {
-            Vesnice.Budovy[A][B].nastavena_akce = "Mnozeni";
+            Vesnice.Budovy[A][B].akce_budovy = "Mnozeni";
             VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, A, B, "Mnozeni"));
         }
 
         private void Zpet_Click(object sender, RoutedEventArgs e)
         {
+            if (B > 0 && A > 0)
+            {
+                if (Vesnice.Budovy[B][A].pracovnici.Count() == 0)
+                {
+                    Vesnice.Budovy[B][A].akce_budovy = null;
+                    Vesnice.Budovy[X][Y].craft_ceho = null;
+                }
+            }
             Vesnice.Ukonci_podokno();
         }
 
@@ -206,6 +216,13 @@ namespace WandsAndGunsEvolve
             okoli.Child = obsah;
 
             pracovnici.Children.Add(okoli);
+        }
+
+        public void craft_click(object sender, RoutedEventArgs e)
+        {
+                Button sesender = sender as Button;
+                VyvolavaciOkno.Navigate(new vyber(VyvolavaciOkno, A, B, sesender.Name));         
+                
         }
     }
 }

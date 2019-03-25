@@ -38,6 +38,7 @@ namespace WandsAndGunsEvolve
         static public int kamen = 20;
         static public int jidlo = 14;
         static public List<string> items = new List<string>();
+        static public List<string> vynalezy = new List<string>();
 
         public bool staveni_bool = false;
         static public Random rnd_s = new Random();
@@ -111,6 +112,13 @@ namespace WandsAndGunsEvolve
             b.EndInit();
 
             invertar_img.Source = b;
+
+            b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri("../img/food.png", UriKind.Relative);
+            b.EndInit();
+
+            Jidlo_img.Source = b;
 
             Vytvor_Lidi_Prvni();
 
@@ -392,14 +400,14 @@ namespace WandsAndGunsEvolve
             {
                 foreach (Budova budova in radek)
                 {
-                    if (budova.nastavena_akce == "Stavba")
+                    if (budova.akce_budovy == "Stavba")
                     {
                         foreach (Postava pracovnik in budova.pracovnici)
                         {
                             budova.Splneno_Na_Postaveni = budova.Splneno_Na_Postaveni + pracovnik.Postava_za_Den;
                         }
                     }
-                    else if (budova.nastavena_akce != null)
+                    else if (budova.akce_budovy != null)
                     {
                         budova.Do();
                     }

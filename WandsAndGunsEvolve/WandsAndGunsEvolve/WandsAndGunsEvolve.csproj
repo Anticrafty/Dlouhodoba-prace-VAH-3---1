@@ -200,5 +200,20 @@
   <ItemGroup>
     <Resource Include="img\Kuze.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\food.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\DraciSupina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Jednorozci_zine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="poznamky\CraftingATD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\provazek.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
