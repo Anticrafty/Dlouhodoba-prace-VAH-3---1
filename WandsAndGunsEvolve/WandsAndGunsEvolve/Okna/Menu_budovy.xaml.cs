@@ -186,7 +186,12 @@ namespace WandsAndGunsEvolve
                 }
                 if (Vesnice.Budovy[A][B].craft_ceho == "kladivo")
                 {
-                    Vesnice.items.Add("Kuze");
+                    Vesnice.items.Add("provazek");
+                    Vesnice.kamen++;
+                }
+                if (Vesnice.Budovy[A][B].craft_ceho == "Stavitel")
+                {
+                    Vesnice.items.Add("kladivo");
                 }
                 pracovnici.Children.Clear();
                 pracovnici_zapis();

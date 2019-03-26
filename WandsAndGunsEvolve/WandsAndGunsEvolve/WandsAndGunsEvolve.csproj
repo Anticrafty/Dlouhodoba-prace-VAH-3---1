@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Classy\Postavy\Bezny_obyvatel.cs" />
     <Compile Include="Classy\Budovy\Budova.cs" />
+    <Compile Include="Classy\Postavy\Stavitel.cs" />
     <Compile Include="Okna\Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
@@ -214,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\provazek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Stavitel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

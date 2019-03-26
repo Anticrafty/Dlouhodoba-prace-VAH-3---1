@@ -177,13 +177,20 @@ namespace WandsAndGunsEvolve
                             Postava.IsEnabled = false;
                         }
                     }
-                        if (Vesnice.Budovy[X][Y].craft_ceho == "kladivo")
+                    if (Vesnice.Budovy[X][Y].craft_ceho == "kladivo")
+                    {
+                        if (!dostatek_itemu("provazek", 1))
                         {
-                            if (!dostatek_itemu("provazek", 1))
-                            {
-                                Postava.IsEnabled = false;
-                            }
-                            if(Vesnice.kamen < 1)
+                            Postava.IsEnabled = false;
+                        }
+                        if(Vesnice.kamen < 1)
+                        {
+                            Postava.IsEnabled = false;
+                        }
+                    }
+                        if (Vesnice.Budovy[X][Y].craft_ceho == "Stavitel")
+                        {
+                            if (!dostatek_itemu("kladivo", 1))
                             {
                                 Postava.IsEnabled = false;
                             }
@@ -297,6 +304,21 @@ namespace WandsAndGunsEvolve
                             id_aktualniho_itemu++;
                         }
                         Vesnice.kamen--;
+                        Vesnice.items.RemoveAt(id_pouzivaneho_itemu);
+                    }
+                    if (Vesnice.Budovy[X][Y].craft_ceho == "Stavitel")
+                    {
+                        int id_pouzivaneho_itemu = 0;
+                        int id_aktualniho_itemu = 0;
+                        foreach (string item in Vesnice.items)
+                        {
+                            if (item == "kladivo")
+                            {
+                                id_pouzivaneho_itemu = id_aktualniho_itemu;
+                                break;
+                            }
+                            id_aktualniho_itemu++;
+                        }
                         Vesnice.items.RemoveAt(id_pouzivaneho_itemu);
                     }
                     if (Vesnice.Budovy[X][Y].akce_budovy == "Vyvoj")
@@ -613,6 +635,63 @@ namespace WandsAndGunsEvolve
                     new_txt.Margin = new Thickness(10, 0, 0, 0);
                     new_txt.VerticalAlignment = VerticalAlignment.Bottom;
                     if (!je_provazek)
+                    {
+                        new_txt.Foreground = Brushes.Red;
+                    }
+
+                    vnitrek.Children.Add(new_txt);
+
+                    Domov.Content = vnitrek;
+
+                    Seznam.Children.Add(Domov);
+                }
+            }
+            if (What == "Uceni")
+            {
+                Vyber_jmeno.Text = "Vyber na co Chcete postavu vyučit.";
+                if (Vesnice.Budovy[X][Y] is Dilna)
+                {
+                    Button Domov = new Button();
+                    Domov.Name = "Stavitel";
+                    Domov.Height = 50;
+                    Domov.BorderThickness = new Thickness(5, 5, 5, 5);
+                    Domov.Margin = new Thickness(5, 5, 5, 5);
+                    Domov.Click += new RoutedEventHandler(Vyber_Click);
+                    bool je_kladivo = dostatek_itemu("kladivo", 1);
+                    if (!je_kladivo || (Vesnice.Budovy[X][Y].craft_ceho != null && Vesnice.Budovy[X][Y].craft_ceho != "Stavitel"))
+                    {
+                        Domov.IsEnabled = false;
+                    }
+
+                    StackPanel vnitrek = new StackPanel();
+                    vnitrek.Orientation = Orientation.Horizontal;
+
+                    Image new_image = new Image();
+                    BitmapImage b = new BitmapImage();
+                    b.BeginInit();
+                    b.UriSource = new Uri("../img/Stavitel.png", UriKind.Relative);
+                    b.EndInit();
+
+                    new_image.Source = b;
+                    new_image.Height = 40;
+                    new_image.Width = 40;
+
+                    vnitrek.Children.Add(new_image);
+
+                    TextBlock new_txt = new TextBlock();
+                    new_txt.FontSize = 24;
+                    new_txt.Text = "Stavitel";
+
+                    vnitrek.Children.Add(new_txt);
+
+
+                    new_txt = new TextBlock();
+                    new_txt.FontSize = 12;
+                    new_txt.Text = "Kladivo: 1";
+                    new_txt.Height = 20;
+                    new_txt.Margin = new Thickness(10, 0, 0, 0);
+                    new_txt.VerticalAlignment = VerticalAlignment.Bottom;
+                    if (!je_kladivo)
                     {
                         new_txt.Foreground = Brushes.Red;
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WandsAndGunsEvolve.Classy.Postavy;
 
 namespace WandsAndGunsEvolve
 {
@@ -37,11 +38,31 @@ namespace WandsAndGunsEvolve
             {
                 Vyvoj();
             }
+            else if (akce_budovy == "Uceni")
+            {
+                Uceni();
+            }
         }
 
         public override void Uceni()
         {
-            throw new NotImplementedException();
+            if (craft_ceho == "Stavitel")
+            {
+                foreach(Postava student in pracovnici)
+                {
+                    int id_studenta = 0;
+                    int id_controlovanych = 0;
+                    foreach(Postava obyvatel in Vesnice.Obyvatele)
+                    {
+                        if (student == obyvatel)
+                        {
+                            id_studenta = id_controlovanych;
+                        }
+                        id_controlovanych++;
+                    }
+                    Vesnice.Obyvatele[id_studenta] = new Stavitel() { ID = id_studenta, muzstvi = Vesnice.Obyvatele[id_studenta].muzstvi, vek = Vesnice.Obyvatele[id_studenta].vek };
+                }
+            }
         }
 
         public override void Vyvoj()

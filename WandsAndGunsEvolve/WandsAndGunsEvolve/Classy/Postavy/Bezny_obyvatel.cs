@@ -17,7 +17,7 @@ namespace WandsAndGunsEvolve
             Rychlost = 2;
             Obrana = 0;
             Postava_za_Den = 1;
-    }
+        }
     }
         
 }
