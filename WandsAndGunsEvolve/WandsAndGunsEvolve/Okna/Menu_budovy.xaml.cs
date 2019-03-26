@@ -67,15 +67,15 @@ namespace WandsAndGunsEvolve
             else
             {
                 Stavba.IsEnabled = false;
-                if (!Vesnice.Budovy[A][B].Vyvoj_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Stavba"))
+                if (!Vesnice.Budovy[A][B].Vyvoj_exist || (Vesnice.Budovy[A][B].akce_budovy != null && Vesnice.Budovy[A][B].akce_budovy != "Vyvoj"))
                 {
                     Vyvoj.IsEnabled = false;
                 }
-                if (!Vesnice.Budovy[A][B].Uceni_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Uceni"))
+                if (!Vesnice.Budovy[A][B].Uceni_exist || (Vesnice.Budovy[A][B].akce_budovy != null && Vesnice.Budovy[A][B].akce_budovy != "Uceni"))
                 {
                     Uceni.IsEnabled = false;
                 }
-                if (!Vesnice.Budovy[A][B].Crafting_exist && (Vesnice.Budovy[A][B].akce_budovy != null || Vesnice.Budovy[A][B].akce_budovy != "Craft"))
+                if (!Vesnice.Budovy[A][B].Crafting_exist || (Vesnice.Budovy[A][B].akce_budovy != null && Vesnice.Budovy[A][B].akce_budovy != "Craft"))
                 {
                     Craft.IsEnabled = false;
                 }
@@ -148,7 +148,7 @@ namespace WandsAndGunsEvolve
                 if (Vesnice.Budovy[B][A].pracovnici.Count() == 0)
                 {
                     Vesnice.Budovy[B][A].akce_budovy = null;
-                    Vesnice.Budovy[X][Y].craft_ceho = null;
+                    Vesnice.Budovy[B][A].craft_ceho = null;
                 }
             }
             Vesnice.Ukonci_podokno();
@@ -178,7 +178,16 @@ namespace WandsAndGunsEvolve
             }
             else
             {
+                
                 Vesnice.Budovy[A][B].pracovnici.RemoveAt(id);
+                if (Vesnice.Budovy[A][B].craft_ceho == "provazek")
+                {
+                    Vesnice.items.Add("Kuze");
+                }
+                if (Vesnice.Budovy[A][B].craft_ceho == "kladivo")
+                {
+                    Vesnice.items.Add("Kuze");
+                }
                 pracovnici.Children.Clear();
                 pracovnici_zapis();
             }

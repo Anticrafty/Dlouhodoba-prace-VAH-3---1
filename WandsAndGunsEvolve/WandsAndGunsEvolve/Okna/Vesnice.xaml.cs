@@ -73,7 +73,7 @@ namespace WandsAndGunsEvolve
 
             b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri("../img/hammer.png", UriKind.Relative);
+            b.UriSource = new Uri("../img/kladivo.png", UriKind.Relative);
             b.EndInit();
 
             staveni_img.Source = b;
@@ -406,11 +406,14 @@ namespace WandsAndGunsEvolve
                         {
                             budova.Splneno_Na_Postaveni = budova.Splneno_Na_Postaveni + pracovnik.Postava_za_Den;
                         }
+                        
                     }
                     else if (budova.akce_budovy != null)
                     {
                         budova.Do();
                     }
+                    budova.akce_budovy = null;
+                    budova.craft_ceho = null;
 
                     if (budova.Splneno_Na_Postaveni >= budova.Potreba_Na_Postaveni)
                     {

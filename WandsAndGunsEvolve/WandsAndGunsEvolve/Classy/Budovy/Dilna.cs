@@ -21,12 +21,22 @@ namespace WandsAndGunsEvolve
 
         public override void Crafting()
         {
-            throw new NotImplementedException();
+            foreach(Postava makeri in pracovnici)
+            {
+                Vesnice.items.Add(craft_ceho);
+            }
         }
 
         public override void Do()
         {
-            throw new NotImplementedException();
+            if (akce_budovy == "Craft")
+            {
+                Crafting();
+            }
+            else if (akce_budovy == "Vyvoj")
+            {
+                Vyvoj();
+            }
         }
 
         public override void Uceni()
@@ -36,7 +46,7 @@ namespace WandsAndGunsEvolve
 
         public override void Vyvoj()
         {
-            throw new NotImplementedException();
+            Vesnice.vynalezy.Add(craft_ceho);
         }
     }
 }

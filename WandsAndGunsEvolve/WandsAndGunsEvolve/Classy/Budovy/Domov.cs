@@ -80,7 +80,6 @@ namespace WandsAndGunsEvolve
                 }
             }
             pracovnici = new List<Postava>();
-            akce_budovy = null;
         }
 
         public override void Uceni()
