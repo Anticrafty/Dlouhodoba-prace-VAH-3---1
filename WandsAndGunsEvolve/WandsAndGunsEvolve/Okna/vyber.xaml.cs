@@ -357,7 +357,7 @@ namespace WandsAndGunsEvolve
 
         private void Zpet_Click(object sender, RoutedEventArgs e)
         {
-            if ( X >= 0 && Y >= 0)
+            if ( X >= 0 && Y >= 0 && What == "Postava")
             { 
                 if (!Vesnice.Budovy[X][Y].pracovnici.Any())
                 {
