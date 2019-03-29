@@ -40,13 +40,20 @@ namespace WandsAndGunsEvolve
         private void Nova_hra(object sender, RoutedEventArgs e)
         {
             List<string> mluva = new List<string>();
-            mluva.Add("Anti was here!!!");
+            mluva.Add("Zdravím!");
+            mluva.Add("Nyní jsi vůdce naší vesnice.");
+            mluva.Add("Jsme tu zatím jen já a moje partnerka.");
+            mluva.Add(" Zařiď nám jídlo, přístřešek a zkoumej nové věci.");
+            mluva.Add("Nyní tě zavedu do naší začínající vesnice.");
+            
+
             string vesnican_obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
             Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
-            Prolog.Navigate(new DialogovyFrame(Prolog, prolog));
+            prologovac = Prolog;
+            Prolog.Navigate(new DialogovyFrame(Prolog, prolog, "Menu"));
             Application.Current.MainWindow.Height = 500;
             Application.Current.MainWindow.Width = 800;
-            prologovac = Prolog;
+            
         }
         
         private void Nacist_Hru(object sender, RoutedEventArgs e)

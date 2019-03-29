@@ -23,12 +23,13 @@ namespace WandsAndGunsEvolve
         private Frame VyvolavaciOkno;
         Rozhovor Dialog;
         int kolikaty_z_listu = 0;
+        string Mastr = null;
 
         public DialogovyFrame()
         {
             InitializeComponent();
         }
-        public DialogovyFrame(Frame vyvolavac, Rozhovor dialog) : this()
+        public DialogovyFrame(Frame vyvolavac, Rozhovor dialog, string master) : this()
         {
             VyvolavaciOkno = vyvolavac;
 
@@ -42,19 +43,28 @@ namespace WandsAndGunsEvolve
 
             Dialog = dialog;
             odesilatel.Source = b;
+            Mastr = master;
+
             Pokracovani(null, null);
         }
 
         private void Pokracovani(object sender, RoutedEventArgs e)
         {
-            if (kolikaty_z_listu + 1 == Dialog.text.Count())
+            if (kolikaty_z_listu != Dialog.text.Count())
             {
                 Text.Text = Dialog.text[kolikaty_z_listu];
                 kolikaty_z_listu++;
             }
             else
             {
-                MainMenu.Ukonci_podokno();
+                if(Mastr == "Menu")
+                {
+                    MainMenu.Ukonci_podokno();
+                }
+                else if(Mastr == "Vesnice")
+                {
+                    Vesnice.Ukonci_podokno();
+                }
             }
             
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WandsAndGunsEvolve.Classy.Postavy;
 
 namespace WandsAndGunsEvolve
 {
@@ -387,6 +388,18 @@ namespace WandsAndGunsEvolve
             Postava Eidam = new Bezny_obyvatel() { muzstvi = true, ID = 0, vek = 1 };
             Postava Mozzarella = new Bezny_obyvatel() { muzstvi = false, ID = 1 , vek = 1};
 
+            List<string> mluva = new List<string>();
+            mluva.Add("Dole červený talčítko je brána, kde se budeme shromažďovat na lov.");
+            mluva.Add("Vlevo šedivý talčítko je kamenolom.");
+            mluva.Add("Vlevo hnědý talčítko je Dřevorubec.");
+            mluva.Add("Hodně štěstí náš vůdce.");
+
+            string vesnican_obr_odkaz = "wallpaper-for-facebook-profile-photo.jpg";
+            Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
+
+            podokno.Navigate(new DialogovyFrame(podokno, prolog, "Vesnice"));
+
+
             Obyvatele.Add(Eidam);
             Obyvatele.Add(Mozzarella);
         }
@@ -493,6 +506,21 @@ namespace WandsAndGunsEvolve
             int count_mrtvich = 0;
             foreach (Postava obyvatel in Obyvatele)
             {
+                
+                if(obyvatel is Stavitel)
+                {
+                    List<string> mluva = new List<string>();
+                    mluva.Add("Právě jsi vytvořil Stavitele.");
+                    mluva.Add("Tímto aktem končí toto Demo.");
+                    mluva.Add("Nečekejte žádný pokračování. :D ");
+                    mluva.Add("Děkuji za hraní.");
+
+                    string vesnican_obr_odkaz = "Stavitel.jpg";
+                    Rozhovor prolog = new Rozhovor() { text = mluva, obr_odkaz = vesnican_obr_odkaz };
+
+                    podokno.Navigate(new DialogovyFrame(podokno, prolog, "Vesnice"));
+                    break;
+                }
                 if (obyvatel.zivy)
                 {
                     bool nepracuje = true;
